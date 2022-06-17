@@ -1,0 +1,20 @@
+meta:
+  url:
+  title:
+  description:
+  siteName:
+  sns: ['twitter']
+slide:
+  loop: false
+  ui:
+    sidebar: false
+    vertical: false
+    pagination: bullets # bullets | progressbar | fraction
+    effect: fade # fade | cube | flip
+  code:
+    # https://prismjs.com/
+    languages:
+      - python
+    plugins:
+      - line-numbers
+    theme: okaidia # coy | dark | funky | okaidia | solarizedlight | tomorrow | twilight
