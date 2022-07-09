@@ -7,7 +7,7 @@
 
 ## Setting Up
 
-*Insert information on setup, IDE, running, debugging, comments, etc.*
+*Insert information on installation and setup*
 
 
 ---
@@ -17,7 +17,7 @@
 First, find the comment that says *'decorate the game window'*. Beneath this you should see the following line of code:
 
 ```python
-pg.display.set_caption("Pygame Aliens")
+pygame.display.set_caption("Pygame Aliens")
 ```
 
 This sets the **window title**.
@@ -25,6 +25,8 @@ This sets the **window title**.
 ### Your Turn
 
 Replace `"Pygame Aliens"` with a title for your own game.
+
+![](../images/1_title.png)
 
 
 ---
@@ -34,14 +36,16 @@ Replace `"Pygame Aliens"` with a title for your own game.
 Now you should find the following code nearby:
 
 ```python
-icon = load_image("alien1.gif")
-icon = pg.transform.scale(icon, (32, 32))
-pg.display.set_icon(icon)
+icon = pygame.image.load("data/alien1.gif")
+icon = pygame.transform.scale(icon, (32, 32))
+pygame.display.set_icon(icon)
 ```
 
-1. The first line of code loads the image from the *alien1.gif* file.
+1. The first line of code loads the image from the *alien1.gif* file in the *data* folder.
 2. The second line scales the image to have a size of 32x32.
 3. The final line sets the **window icon** for your game in the toolbar.
+
+![](../images/2_icon.png)
 
 ### Your Turn
 At the moment, it loads the image from the *alien1.gif* file. Replace 'alien1.gif' with the filename of your own icon image.
@@ -61,7 +65,12 @@ SCREENRECT = pg.Rect(0, 0, 640, 480)
 
 The first two values must be `(0, 0)` for the top left corner. The second two values are the width (640) and the height (480).
 
-### Your Turn
+![](../images/3_screen_size.png)
+
+
+---
+
+## Your Turn
 
 Try and change the size of the window to be:
 * Small
@@ -71,6 +80,8 @@ Try and change the size of the window to be:
 
 Which is the easiest to play?
 
+![](../images/4_widescreen.png)
+
 
 ---
 
@@ -79,6 +90,8 @@ Which is the easiest to play?
 So how do computer graphics work?
 
 So far, we've introduced the display, which is the window that displays our game. A window is a rectangular area made up of pixels.
+
+<img src="../images/6_car.png" />
 
 Each pixel is the smallest block of colour that can make up the image.
 
@@ -93,7 +106,7 @@ In order to draw images onto the window, we need to know exactly where to place 
 
 The top left pixel of the window is at coordinate (0, 0).
 
-*Insert image of pixel coordinates in pygame.*
+<img src="../images/7_coordinates.png" />
 
 
 ---
@@ -104,7 +117,7 @@ Each pixel has one single colour. We use RGB values (red green blue) to express 
 
 i.e. Colour(255, 0, 0) has maximum red but minimum green and blue.
 
-*Insert images with more examples of colours and their RGB counterpart.*
+![](../images/8_colours.jpg)
 
 
 ---
@@ -114,14 +127,14 @@ i.e. Colour(255, 0, 0) has maximum red but minimum green and blue.
 
 The objects in a game are called **sprites**. A sprite can be anything including the player, other characters, collectable items, enemies and obstacles.
 
-Each type of sprite has a class definition for it.
+![](../images/9_sprites.png)
+
+Each type of sprite has a class definition for it. Here is the class definition for *Player* sprites:
 
 ```python
 class Player(pg.sprite.Sprite):
     ...
 ```
-
-Here is the class definition for player sprites.
 
 ### Your Turn
 
@@ -134,7 +147,7 @@ How many sprites are there and what are they called?
 
 ## Sprite Classes
 
-Although there's a lot of code in these sprite classes, there are only two things a sprite needs:
+Although there's a lot of code in these sprite classes, there are only two things every sprite needs:
 
 `self.image` and `self.rect`
 
@@ -142,8 +155,16 @@ The image is obviously the sprite's image that gets displayed on the screen.
 
 The rect is the rectangular area it takes up on the screen.
 
+<!-- ![](../images/10_player.png) -->
+<img src="../images/10_player.png" />
+
+
+---
+
+## Sprite Classes
+
 ```python
-self.image = load_image("player1.gif")
+self.image = pygame.image.load("data/player1.gif")
 self.rect = self.image.get_rect()
 ```
 
@@ -154,3 +175,10 @@ Here we load the image we want from a file and then set the rect to fit that ima
 Change the image of each sprite in the game. You can use your own images or download images from free-to-use websites like [itch.io](https://itch.io/game-assets/free/tag-2d).
 
 Can you change the entire look and feel of the game by using different images?
+
+
+---
+
+![](../images/11_alt_game.png)
+
+
