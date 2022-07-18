@@ -12,6 +12,78 @@
 
 ---
 
+## Python Basics
+
+This is a comment. It doesn't do anything when you run your code; it's just a note for us programmers to read.
+
+```python
+# Here is a helpful comment.
+```
+
+This is a print statement. When it runs, its contents gets output to the console window.
+
+```python
+print("Hello World!")
+```
+
+![](../images/0_console.png)
+
+
+---
+
+## Running Code
+
+![](../images/0_pycharm.png)
+
+Order is important - when your code runs, it starts from the top of the file and carries out each instruction one after the other.
+
+![](../images/0_execution_order.png)
+
+
+---
+
+## Searching
+
+Code files can get pretty long quite quickly. To search for something in your file, use `Cmd+F` (Mac) or `Ctrl+F` (Windows).
+
+![](../images/0_search.png)
+
+Also notice the **line numbers** to the left of your code. These can be handy when looking for a particular line of code in your file.
+
+
+---
+
+## Handling Errors
+
+Sometimes things don't go the way we expect. If you see an error in the console window after running your code, don't panic. Here are some general tips to fix things:
+
+1. The error message will often say which line of code failed. Find this line to try and locate the problem.
+2. A **syntax error** is like a spelling mistake for code. Maybe you forgot a closing bracket `)`, a colon `:`, or a quotation mark `"`?
+
+![](../images/0_errors.png)
+
+*Here I forgot to include a quotation mark at the end of my message. The error message says the problem is in line 5.*
+
+3. If you're really stuck, try copying the error message into Google to search for solutions or ask for help!
+
+
+---
+
+# Example Game
+
+Time to start making games!
+
+We have an example game that ships with Pygame, called Aliens. Your player is a moon buggy at the bottom of the screen. The alien space ships descend from the top of the screen and drop bombs. If either a bomb or an alien hits you, you die.
+
+![](../images/1_title.png)
+
+* Use the **arrow keys** to move around.
+* Press the **spacebar** to fire at the aliens.
+* Press the `ESC` key or **red button** to quit the game.
+
+
+---
+
 ## The Window Title
 
 First, find the comment that says *'decorate the game window'*. Beneath this you should see the following line of code:
@@ -27,6 +99,8 @@ This sets the **window title**.
 Replace `"Pygame Aliens"` with a title for your own game.
 
 ![](../images/1_title.png)
+
+Run the code to see the result!
 
 
 ---
@@ -47,8 +121,21 @@ pygame.display.set_icon(icon)
 
 ![](../images/2_icon.png)
 
-### Your Turn
+
+---
+
+## Your Turn
 At the moment, it loads the image from the *alien1.gif* file. Replace 'alien1.gif' with the filename of your own icon image.
+
+Run the code to see if the icon changed.
+
+### Common Errors
+
+At this point you might get an error. Make sure that the image you're trying to use is in the `data` folder. In the code, your image name needs to include both the folder (`data/`) at the start and the file extension (e.g. `.png, .jpg, .gif`, etc.) at the end.
+
+```python
+"data/image_name.png"
+```
 
 
 ---
@@ -155,7 +242,6 @@ The image is obviously the sprite's image that gets displayed on the screen.
 
 The rect is the rectangular area it takes up on the screen.
 
-<!-- ![](../images/10_player.png) -->
 <img src="../images/10_player.png" />
 
 
@@ -165,16 +251,31 @@ The rect is the rectangular area it takes up on the screen.
 
 ```python
 self.image = pygame.image.load("data/player1.gif")
+self.image = pygame.transform.scale(self.image, (90, 61))
 self.rect = self.image.get_rect()
 ```
 
-Here we load the image we want from a file and then set the rect to fit that image.
+Here we load the image we want from a file, scale it to the desired size (90 x 61px) and then set the rect to fit that image.
 
-### Your Turn
+
+---
+
+## Your Turn
 
 Change the image of each sprite in the game. You can use your own images or download images from free-to-use websites like [itch.io](https://itch.io/game-assets/free/tag-2d).
 
 Can you change the entire look and feel of the game by using different images?
+
+
+### How to Remove Backgrounds
+
+You can remove the background from your sprite's image by using the following function. It takes in the RGB colour of the background as a parameter.
+
+```python
+self.image.set_colorkey((255, 0, 0))
+```
+
+This will make the red colour in the image transparent.
 
 
 ---

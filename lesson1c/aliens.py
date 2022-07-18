@@ -22,7 +22,7 @@ MAX_SHOTS = 2  # most player bullets onscreen
 ALIEN_ODDS = 22  # chances a new alien appears
 BOMB_ODDS = 60  # chances a new bomb will drop
 ALIEN_RELOAD = 12  # frames between new aliens
-SCREENRECT = pygame.Rect(0, 0, 640, 480)
+SCREENRECT = pygame.Rect(0, 0, 400, 800)
 SCORE = 0
 
 main_dir = os.path.split(os.path.abspath(__file__))[0]
@@ -39,6 +39,7 @@ class Player(Sprite):
     def __init__(self):
         Sprite.__init__(self, self.containers)
         self.image = pygame.image.load("data/player1.gif")
+        self.image = pygame.transform.scale(self.image, (90, 61))
         self.rect = self.image.get_rect()
         self.rect.midbottom = SCREENRECT.midbottom
         self.reloading = 0
@@ -66,6 +67,7 @@ class Alien(Sprite):
     def __init__(self):
         Sprite.__init__(self, self.containers)
         self.image = pygame.image.load("data/alien1.gif")
+        self.image = pygame.transform.scale(self.image, (80, 71))
         self.rect = self.image.get_rect()
         self.facing = random.choice((-1, 1)) * Alien.speed
         if self.facing < 0:
@@ -117,6 +119,7 @@ class Shot(Sprite):
     def __init__(self, pos):
         Sprite.__init__(self, self.containers)
         self.image = pygame.image.load("data/shot.gif")
+        self.image = pygame.transform.scale(self.image, (9, 18))
         self.rect = self.image.get_rect(midbottom=pos)
 
     def update(self):
@@ -138,6 +141,7 @@ class Bomb(Sprite):
     def __init__(self, alien):
         Sprite.__init__(self, self.containers)
         self.image = pygame.image.load("data/bomb.gif")
+        self.image = pygame.transform.scale(self.image, (16, 24))
         self.rect = self.image.get_rect()
         self.rect.midbottom = alien.rect.move(0, 5).midbottom
 
@@ -199,8 +203,8 @@ def main(winstyle=0):
     Explosion.images = [img, pygame.transform.flip(img, 1, 1)]
 
     # decorate the game window
-    pygame.display.set_caption("Pygame Aliens")
-    icon = pygame.image.load("data/alien1.gif")
+    pygame.display.set_caption("alien gerbils")
+    icon = pygame.image.load("data/unicorn.png")
     icon = pygame.transform.scale(icon, (32, 32))
     pygame.display.set_icon(icon)
     pygame.mouse.set_visible(0)

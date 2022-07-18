@@ -51,7 +51,9 @@ Don't worry about what it does for now. We'll come back to it another time.
 
 ## Background Colour
 
-Use the following command to change the background colour of the window:
+Use the following command to change the background colour of the window.
+
+Make sure to write this code AFTER you created the screen but BEFORE you start the infinite loop - order is important!
 
 ```python
 screen.fill([255,255,255])
@@ -63,8 +65,6 @@ And then update the display:
 pygame.display.flip()
 ```
 
-Make sure to write this code AFTER you created the screen but BEFORE you start the infinite loop - order is important!
-
 The three numbers represent the RGB value `[red, green, blue]` of the colour. The maximum is 255 (bright) and the minimum is 0 (dark).
 
 ![background](/images/filled_screen.png)
@@ -73,7 +73,7 @@ The three numbers represent the RGB value `[red, green, blue]` of the colour. Th
 
 ## Task 2
 
-What colour does each of the following RGB values create?
+What colour does each of the following RGB values create? Try and guess first, then run the code to see if you're right.
 
 `[255, 0, 0]`
 
@@ -119,7 +119,7 @@ This draws `my_rect` onto the `screen` and fills it in with a red `(255, 0, 0)` 
 
 ## Task 3
 
-Try and recreate the following images by drawing rectangles onto the screen.
+Try and recreate the following images by drawing rectangles onto the screen. As before, make sure to write your code AFTER setting up the screen but BEFORE calling `pygame.display.flip()`.
 
 To help figure them out, try using a methodical, step-by-step process. For example:
 
