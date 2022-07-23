@@ -180,7 +180,7 @@ So how do computer graphics work?
 
 So far, we've introduced the display, which is the window that displays our game. A window is a rectangular area made up of pixels.
 
-<img src="../images/6_car.png" />
+![](../images/6_car.png)
 
 Each pixel is the smallest block of colour that can make up the image.
 
@@ -195,7 +195,7 @@ In order to draw images onto the window, we need to know exactly where to place 
 
 The top left pixel of the window is at coordinate (0, 0).
 
-<img src="../images/7_coordinates.png" />
+![](../images/7_coordinates.png)
 
 
 ---
@@ -244,7 +244,7 @@ The image is obviously the sprite's image that gets displayed on the screen.
 
 The rect is the rectangular area it takes up on the screen.
 
-<img src="../images/10_player.png" />
+![](../images/10_player.png)
 
 
 ---
