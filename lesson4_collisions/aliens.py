@@ -9,7 +9,7 @@ Controls
 * f key to toggle between fullscreen.
 
 """
-
+import math
 import os
 import pygame
 import random
@@ -22,6 +22,8 @@ MAX_SHOTS = 2  # most player bullets onscreen
 ALIEN_ODDS = 22  # chances a new alien appears
 BOMB_ODDS = 60  # chances a new bomb will drop
 ALIEN_RELOAD = 12  # frames between new aliens
+POWERUP_ODDS = 100  # chances a new med kit appears
+POWERUP_RELOAD = 200   # frames between new med kits
 SCREENRECT = pygame.Rect(0, 0, 640, 480)
 
 # colour constants
@@ -189,6 +191,22 @@ class Bomb(Sprite):
             self.kill()
 
 
+class PowerUp(Sprite):
+    def __init__(self):
+        Sprite.__init__(self, self.containers)
+        self.image = pygame.image.load("data/powerup.png")
+        self.image = pygame.transform.scale(self.image, (16, 16))
+        self.rect = self.image.get_rect()
+        x = random.randrange(30, SCREENRECT.width - 30, 30)
+        self.rect.move_ip(x, SCREENRECT.height - 50)
+        self.y_offset = 0.0
+
+    def update(self):
+        y = int(math.sin(self.y_offset) * 3)
+        self.rect.move_ip(0, y)
+        self.y_offset += 0.2
+
+
 class StatsBar(Sprite):
     def __init__(self):
         Sprite.__init__(self, self.containers)
@@ -228,6 +246,11 @@ class Health(Sprite):
 
     def reduce_health(self):
         self.health -= 1
+        self.message = "Health: " + str(self.health)
+        self.image = self.font.render(self.message, False, WHITE)
+
+    def increase_health(self):
+        self.health += 1
         self.message = "Health: " + str(self.health)
         self.image = self.font.render(self.message, False, WHITE)
 
@@ -292,15 +315,16 @@ def main(winstyle=0):
         pygame.mixer.music.load(music)
         pygame.mixer.music.play(-1)
 
-    # Initialize Game Groups
+    # Initialize Game Groups.
     aliens = Group()
     shots = Group()
     bombs = Group()
     all = RenderUpdates()
     hud = Group()
     lastalien = GroupSingle()
+    powerups = Group()
 
-    # assign default groups to each sprite class
+    # Assign default groups to each sprite class.
     Player.containers = all
     Alien.containers = aliens, all, lastalien
     Shot.containers = shots, all
@@ -311,25 +335,28 @@ def main(winstyle=0):
     Health.containers = hud
     WeaponType.containers = hud
     HomingMissile.containers = shots, all
+    PowerUp.containers = powerups, all
 
     # Create Some Starting Values.
     alienreload = ALIEN_RELOAD
+    powerup_reload = POWERUP_RELOAD
     clock = pygame.time.Clock()
 
-    # Initialize our starting sprites.
+    # Initialise our starting sprites.
     player = Player()
     Alien()
     StatsBar()
     score = Score()
     health = Health()
     weapon_type = WeaponType()
+    PowerUp()
 
     paused = False
 
     # Run our main loop whilst the player is alive.
     while player.alive():
 
-        # get input
+        # Get input.
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
@@ -377,19 +404,26 @@ def main(winstyle=0):
                     shoot_sound.play()
             player.reloading = firing
 
-            # Create new alien
+            # Create new alien.
             if alienreload:
                 alienreload = alienreload - 1
             elif not int(random.random() * ALIEN_ODDS):
                 Alien()
                 alienreload = ALIEN_RELOAD
 
-            # Drop bombs
+            # Create new med kit.
+            if powerup_reload:
+                powerup_reload -= 1
+            elif not int(random.random() * POWERUP_ODDS):
+                PowerUp()
+                powerup_reload = POWERUP_RELOAD
+
+            # Drop bombs.
             if lastalien and not int(random.random() * BOMB_ODDS):
                 Bomb(lastalien.sprite)
 
             # Detect collisions between aliens and players.
-            for alien in spritecollide(player, aliens, 1):
+            for alien in spritecollide(player, aliens, dokill=True):
                 if pygame.mixer:
                     boom_sound.play()
                 Explosion(alien)
@@ -404,12 +438,17 @@ def main(winstyle=0):
                 score.increment_score()
 
             # See if alien bombs hit the player.
-            for bomb in spritecollide(player, bombs, 1):
+            for bomb in spritecollide(player, bombs, dokill=True):
                 if pygame.mixer:
                     boom_sound.play()
                 Explosion(player)
                 Explosion(bomb)
                 health.reduce_health()
+
+            # See if the player collected a med kit.
+            for kit in spritecollide(player, powerups, dokill=True):
+                kit.kill()
+                health.increase_health()
 
             # See if the player has run out of health.
             if health.health == 0:
