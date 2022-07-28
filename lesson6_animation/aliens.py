@@ -78,7 +78,6 @@ class Alien(Sprite):
         self.facing = random.choice((-1, 1)) * Alien.speed
         if self.facing < 0:
             self.rect.right = SCREENRECT.right
-        self.anim_index = 0
 
     def update(self):
         self.rect.move_ip(self.facing, 0)
@@ -86,11 +85,6 @@ class Alien(Sprite):
             self.facing = -self.facing
             self.rect.top = self.rect.bottom + 1
             self.rect = self.rect.clamp(SCREENRECT)
-
-        self.image = self.images[self.anim_index]
-        self.anim_index += 1
-        if self.anim_index == len(self.images):
-            self.anim_index = 0
 
 
 class Explosion(Sprite):
@@ -297,10 +291,6 @@ def main(winstyle=0):
     # (do this before the classes are used, after screen setup)
     img = pygame.image.load("data/explosion1.gif")
     Explosion.images = [img, pygame.transform.flip(img, 1, 1)]
-
-    for i in range(0, 3):
-        filepath = "data/alien" + str(i + 1) + ".gif"
-        Alien.images[i] = pygame.image.load(filepath)
 
     # Decorate the game window.
     pygame.display.set_caption("Pygame Aliens")
