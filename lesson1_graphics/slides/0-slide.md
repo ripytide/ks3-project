@@ -16,19 +16,34 @@ Open up the aliens.py file in PyCharm.
 
 ## Python Basics
 
-This is a comment. It doesn't do anything when you run your code; it's just a note for us programmers to read.
+This is a comment.
+It doesn't do anything when you run your code; it's just a note for us programmers to read.
 
 ```python
 # Here is a helpful comment.
 ```
 
-This is a print statement. When it runs, its contents gets output to the console window.
+Functions are commands that perform some kind of action.
+They have a **name** and take in **parameters** (extra information). 
+
+This is a `print` function. When it runs, its parameter (the `"Hello World!"` message) gets output to the console window.
 
 ```python
 print("Hello World!")
 ```
 
 ![](../images/0_console.png)
+
+Some functions produce results.
+We can save the result by storing it in a variable.
+
+For example, the `round` function rounds a decimal number to the nearest whole number.
+Here, we store the result in a variable called `x`.
+
+```python
+# This rounds 3.7 up to 4 and then stores 4 in x
+x = round(3.7)
+```
 
 
 ---
@@ -88,13 +103,14 @@ We have an example game that ships with Pygame, called Aliens. Your player is a 
 
 ## The Window Title
 
-First, find the comment that says *'decorate the game window'*. Beneath this you should see the following line of code:
+First, find the comment that says *'decorate the game window'*.
+Beneath this you should see the following line of code:
 
 ```python
 pygame.display.set_caption("Pygame Aliens")
 ```
 
-This sets the **window title**.
+This is a function that sets the **window title**.
 
 ### Your Turn
 

@@ -102,6 +102,22 @@ It uses the font we just created to render the message. Here, our message is sto
 
 ![](../images/2_blue_score.png)
 
+<details>
+    <summary>Hint</summary>
+Under the 'colour constants' comment, write
+
+```python
+RED = pygame.colour.Colour(255, 0, 0)
+```
+
+Then, back in the Score sprite, change WHITE to RED:
+
+```python
+self.image = self.font.render(self.message, False, RED)
+```
+
+Now try the same for yellow and teal (use the colour wheel from worksheet 1 to help).
+</details>
 
 ---
 
@@ -156,6 +172,14 @@ result = (2 + x) / 10 # order of operations
 2. Using *radius*, calculate the perimeter of the circle and store it in a new variable called *'perimeter'*.
 3. Print the result to see if it worked.
 
+<details>
+    <summary>Hint</summary>
+The formula for calculating the perimeter of a circle is:
+
+`perimeter = 2πr`
+
+where `r` is the radius and `π` is pi (approximately 3.14).
+</details>
 
 ---
 
@@ -270,6 +294,26 @@ self.image = self.font.render(self.message, False, WHITE)
 
 Run the game and check if the score updates properly each time you shoot an alien.
 
+<details>
+    <summary>Stuck?</summary>
+
+```python
+class Score(Sprite):
+    def __init__(self):
+        Sprite.__init__(self, self.containers)
+        self.font = pygame.font.SysFont(None, 20, bold=False, italic=False)
+        self.message = "Score: 0"
+        self.image = self.font.render(self.message, False, WHITE)
+        self.rect = self.image.get_rect()
+        self.rect.move_ip(10, 5)
+        self.score = 0
+
+    def increment_score(self):
+        self.score = self.score + 1
+        self.message = "Score: " + str(self.score)
+        self.image = self.font.render(self.message, False, WHITE)
+```
+</details>
 
 ---
 
@@ -301,27 +345,20 @@ First off, we're going to need to create a new sprite to store the health. If yo
 
 ## Creating the Sprite
 
-So far, we've defined the *class* of the sprite, i.e. what a Health sprite 'should' have. In order to create an actual instance of this sprite, we need to do two things.
+So far, we've defined the *class* of the sprite, i.e. what a Health sprite 'should' have.
+Now we need to create an actual instance of this sprite.
 
-1. Search for the following code:
-
-![](../images/5_containers.png)
-
-Add the following line here so that the Health sprite will be recognised as part of the HUD (Heads Up Display):
-
-```python
-Health.containers = hud
-```
-
-2. Search for the following code:
+Search for the following code:
 
 ![](../images/5_instantiation.png)
 
 Create an instance of the health sprite by adding this line here:
 
 ```python
-health = Health()
+health = Health(containers=hud)
 ```
+
+The `containers` parameter specifies which **groups** we want this sprite to belong to (more on this another time).
 
 
 ---
@@ -332,6 +369,20 @@ Now if you run the game, you should see your health sprite displayed. You might 
 
 ![](../images/6_health_game.png)
 
+<details>
+    <summary>Stuck?</summary>
+
+```python
+class Health(Sprite):
+    def __init__(self, containers=()):
+        Sprite.__init__(self, containers)
+        self.font = pygame.font.SysFont('times', 20, bold=False, italic=False)
+        self.message = "Health: 10"
+        self.image = self.font.render(self.message, False, WHITE)
+        self.rect = self.image.get_rect()
+        self.rect.move_ip(SCREENRECT.width - 80, 5)
+```
+</details>
 
 ---
 
@@ -341,8 +392,8 @@ To update the health, we're going to need to add a `lives` variable to store the
 
 ```python
 class Health(Sprite):
-    def __init__(self):
-        Sprite.__init__(self, self.containers)
+    def __init__(self, containers=()):
+        Sprite.__init__(self, containers)
         ...
         self.lives = 10
         ...
@@ -383,7 +434,31 @@ Replace `player.kill()` with `health.reduce_health()`.
 
 ## Dying
 
-If you run the game now, you should see that health gets reduced each time you get hit by an alien or bomb. Great! But now you're immortal...
+If you run the game now, you should see that health gets reduced each time you get hit by an alien or bomb.
+
+<details>
+    <summary>Not working?</summary>
+Make sure you followed the previous steps exactly and your `Health` class looks like this:
+
+```python
+class Health(Sprite):
+    def __init__(self):
+        Sprite.__init__(self, self.containers)
+        self.font = pygame.font.SysFont("times", 18, bold=False, italic=False)
+        self.message = "Health: 10"
+        self.image = self.font.render(self.message, False, WHITE)
+        self.rect = self.image.get_rect()
+        self.rect.move_ip(SCREENRECT.width - 80, 5)
+        self.health = 10
+
+    def reduce_health(self):
+        self.health = self.health - 1
+        self.message = "Health: " + str(self.health)
+        self.image = self.font.render(self.message, False, WHITE)
+```
+</details>
+
+But now you're immortal...
 
 ### Your Turn
 
