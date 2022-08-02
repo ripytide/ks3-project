@@ -250,46 +250,132 @@ How many sprites are there and what are they called?
 
 ---
 
-## Sprite Classes
+## Sprite Classes (1)
 
-Although there's a lot of code in these sprite classes, there are only two things every sprite needs:
+A sprite class is like the blueprints for creating a sprite.
+In it, we define what a sprite of that particular class should have and how it should behave.
 
-`self.image` and `self.rect`
+![](../../extra/images/sprite_class_1.jpg)
 
-The image is obviously the sprite's image that gets displayed on the screen.
 
-The rect is the rectangular area it takes up on the screen.
+---
+
+## Sprite Classes (2)
+
+There are a few things that every sprite class needs:
+
+![](../../extra/images/sprite_class_2.jpg)
 
 ![](../images/10_player.png)
 
 
 ---
 
-## Sprite Classes
+## Containers
+
+`containers` is a class variable (common to all sprites of that class).
+It stores the groups that the sprite belongs to.
+We set this *outside* of the class.
+
+Find the following code:
 
 ```python
-self.image = pygame.image.load("data/player1.gif")
-self.image = pygame.transform.scale(self.image, (90, 61))
-self.rect = self.image.get_rect()
+# Assign default groups to each sprite class.
+Player.containers = all
+Alien.containers = aliens, all, lastalien
+Shot.containers = shots, all
+Bomb.containers = bombs, all
+Explosion.containers = all
 ```
 
-Here we load the image we want from a file, scale it to the desired size (90 x 61px) and then set the rect to fit that image.
+Don't worry too much about this now.
+Just know that we use the `all` group to know what to render (display on the screen).
+So if you define a new class of sprites, make sure to add `all` to its containers!
 
+
+---
+
+## Images
+
+The sprite's image is also a class variable.
+We set its value *outside* of the class.
+
+Find the following code:
+
+```python
+# Assign default images to each sprite class.
+Player.image = pygame.image.load("data/player1.gif")
+Alien.image = pygame.image.load("data/alien1.gif")
+Shot.image = pygame.image.load("data/shot.gif")
+Bomb.image = pygame.image.load("data/bomb.gif")
+```
+
+Each line of code loads an image from the given filename and sets it as the image for a sprite class.
 
 ---
 
 ## Your Turn
 
-Change the image of each sprite in the game. You can use your own images or download images from free-to-use websites like [itch.io](https://itch.io/game-assets/free/tag-2d).
+Change the image of each sprite in the game.
+You can use your own images or download images from free-to-use websites like [itch.io](https://itch.io/game-assets/free/tag-2d).
+
+Make sure to save your images in the 'data' folder and include `"data/"` in the filename!
 
 Can you change the entire look and feel of the game by using different images?
 
-*See the next slide for inspiration...*
+![](../images/11_alt_game.png)
 
 
-### How to Remove Backgrounds
+---
 
-You can remove the background from your sprite's image by using the following function. It takes in the RGB colour of the background as a parameter.
+## Initialisation
+
+So far, we've assigned an image to the sprite class and the groups its sprites should belong to.
+Now we can define what should happen when we create a new individual sprite from this class.
+
+Remember, this all happens inside the initialisation function:
+
+```python
+class Player(Sprite):
+    ...
+
+    def __init__(self):
+        Sprite.__init__(self, self.containers)
+        self.image = pygame.transform.scale(self.image, (90, 61))
+        self.rect = self.image.get_rect()
+        self.rect.midbottom = SCREENRECT.midbottom
+        self.reloading = 0
+        self.origtop = self.rect.top
+        self.facing = -1
+```
+
+
+---
+
+## How to Scale an Image
+
+Inside the initialisation function, use the following function to scale an image.
+Make sure to write it *before* setting `self.rect = ...`.
+Replace `w` with the new width and `h` with the new height in pixels.
+
+```python
+self.image = pygame.transform.scale(self.image, (w, h))
+```
+
+### Your Turn
+
+Can you make the player giant and the aliens tiny?
+
+How about the other way round?
+
+What happens when you scale the width more than the height?
+
+---
+
+## How to Remove Backgrounds
+
+You can remove the background from your sprite's image by using the following function.
+It takes in the RGB colour of the background as a parameter.
 
 ```python
 self.image.set_colorkey((255, 0, 0))
@@ -297,9 +383,101 @@ self.image.set_colorkey((255, 0, 0))
 
 This will make the red colour in the image transparent.
 
+![](../../extra/images/chimp1.bmp)
+
+![](../../extra/images/chimp2.bmp)
+
+### Your Turn
+
+If you haven't already, set the image for a sprite class to one that has a coloured background.
+
+Now use the `set_colorkey` function to remove the background colour.
+
 
 ---
 
-![](../images/11_alt_game.png)
+## Get Rect
 
+This is the final essential thing we need to do!
+
+After setting the image, we now need to set the `rect`.
+Remember, this is the rectangular area that the sprite takes up on the screen.
+
+There is one simple function we can use to do this.
+Make sure it goes inside the initialisation (`__init__`) function *after* you're done setting up the image:
+
+```python
+self.rect = self.image.get_rect()
+```
+
+
+---
+
+## Changing the Start Position
+
+The previous function uses the dimensions of the image for the rectangle's area.
+By default, it places the rectangle's top left corner at coordinate (0, 0).
+
+If you then want to move the sprite to a different position, there are a bunch of options...
+
+```python
+self.rect.topleft = (100, 50) # This moves the sprite so its top left corner is at coordinate (100, 50).
+self.rect.midright = (30, 200) # This moves the sprite so its mid right point is at coordinate (30, 200).
+self.center = (100, 100) # This moves the sprite so its centre is at coordinate (100, 100).
+```
+
+You can get other points by combining top, bottom, mid, left and right (e.g. `midleft` or `bottomright`).
+
+### Your Turn
+
+Can you start the player off on the bottom left hand side of the screen?
+
+Or the bottom right?
+
+
+---
+
+## Instantiating a Sprite
+
+Great! You can now define a sprite class and everything a sprite needs in its initialisation function.
+
+Now, to actually create an instance of this class and put it in the game, we do the following.
+
+```python
+Player()
+```
+
+Or
+
+```python
+player = Player()
+```
+
+If we want a reference to it for later.
+
+Notice how the sprite class has an uppercase `P` but our specific instance is all lowercase.
+(In fact, we could call the instance whatever we like, but `player` is most descriptive).
+
+### Your Turn
+
+Can you spot all the times we instantiate a sprite?
+
+Are some sprites instantiated in multiple parts of the code?
+
+
+---
+
+## Challenges
+
+Create a new sprite class for the game.
+Maybe there should be a piece of cheese on the moon?
+Or a planet in the background?
+
+1. Give the class a name.
+2. Add its `image` and `containers` class variables inside the class.
+3. Set these values *outside* the class.
+4. Create an initialisation (`__init__`) function.
+5. Set the `rect`.
+6. Optionally, you can resize, move and remove background colour.
+7. Finally, create a new instance of the class.
 
