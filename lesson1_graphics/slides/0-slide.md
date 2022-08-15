@@ -5,15 +5,6 @@
 
 ---
 
-## Setting Up
-
-Install PyCharm, Python 3.9 or later and Pygame.
-
-Open up the aliens.py file in PyCharm.
-
-
----
-
 ## Python Basics
 
 This is a comment.
@@ -61,7 +52,7 @@ Order is important - when your code runs, it starts from the top of the file and
 
 ## Searching
 
-Code files can get pretty long quite quickly. To search for something in your file, use `Cmd+F` (Mac) or `Ctrl+F` (Windows).
+Code files can get quite long pretty quickly. To search for something in your file, use `Cmd+F` (Mac) or `Ctrl+F` (Windows).
 
 ![](../images/0_search.png)
 
@@ -79,7 +70,7 @@ Sometimes things don't go the way we expect. If you see an error in the console 
 
 ![](../images/0_errors.png)
 
-*Here I forgot to include a quotation mark at the end of my message. The error message says the problem is in line 5.*
+*Here I forgot to include a quotation mark at the end of my code. The error message says the problem is in line 5.*
 
 3. If you're really stuck, try copying the error message into Google to search for solutions or ask for help!
 

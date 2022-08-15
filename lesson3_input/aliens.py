@@ -38,10 +38,11 @@ class Player(Sprite):
     speed = 10
     bounce = 24
     gun_offset = -11
+    image = None
+    containers = None
 
     def __init__(self):
         Sprite.__init__(self, self.containers)
-        self.image = pygame.image.load("data/player1.gif")
         self.image = pygame.transform.scale(self.image, (90, 61))
         self.rect = self.image.get_rect()
         self.rect.midbottom = SCREENRECT.midbottom
@@ -66,10 +67,11 @@ class Alien(Sprite):
     """
 
     speed = 13
+    image = None
+    containers = None
 
     def __init__(self):
         Sprite.__init__(self, self.containers)
-        self.image = pygame.image.load("data/alien1.gif")
         self.image = pygame.transform.scale(self.image, (80, 71))
         self.rect = self.image.get_rect()
         self.facing = random.choice((-1, 1)) * Alien.speed
@@ -91,6 +93,7 @@ class Explosion(Sprite):
     defaultlife = 12
     animcycle = 3
     images = []
+    containers = None
 
     def __init__(self, actor):
         Sprite.__init__(self, self.containers)
@@ -118,10 +121,11 @@ class Shot(Sprite):
     """
 
     speed = -11
+    image = None
+    containers = None
 
     def __init__(self, pos):
         Sprite.__init__(self, self.containers)
-        self.image = pygame.image.load("data/shot.gif")
         self.image = pygame.transform.scale(self.image, (9, 18))
         self.rect = self.image.get_rect(midbottom=pos)
 
@@ -136,9 +140,11 @@ class Shot(Sprite):
 
 
 class HomingMissile(Sprite):
+    image = None
+    containers = None
+
     def __init__(self, pos):
         Sprite.__init__(self, self.containers)
-        self.image = pygame.image.load("data/shot.gif")
         self.image = pygame.transform.scale(self.image, (9, 18))
         self.rect = self.image.get_rect(midbottom=pos)
 
@@ -156,10 +162,11 @@ class Bomb(Sprite):
     """
 
     speed = 9
+    image = None
+    containers = None
 
     def __init__(self, alien):
         Sprite.__init__(self, self.containers)
-        self.image = pygame.image.load("data/bomb.gif")
         self.image = pygame.transform.scale(self.image, (16, 24))
         self.rect = self.image.get_rect()
         self.rect.midbottom = alien.rect.move(0, 5).midbottom
@@ -180,6 +187,8 @@ class Bomb(Sprite):
 
 
 class StatsBar(Sprite):
+    containers = None
+
     def __init__(self):
         Sprite.__init__(self, self.containers)
         self.image = pygame.surface.Surface((SCREENRECT.width, 25))
@@ -190,6 +199,7 @@ class StatsBar(Sprite):
 class Score(Sprite):
     """ to keep track of the score.
     """
+    containers = None
 
     def __init__(self):
         Sprite.__init__(self, self.containers)
@@ -207,6 +217,8 @@ class Score(Sprite):
 
 
 class Health(Sprite):
+    containers = None
+
     def __init__(self):
         Sprite.__init__(self, self.containers)
         self.font = pygame.font.SysFont("times", 18, bold=False, italic=False)
@@ -223,6 +235,8 @@ class Health(Sprite):
 
 
 class WeaponType(Sprite):
+    containers = None
+
     def __init__(self):
         Sprite.__init__(self, self.containers)
         self.font = pygame.font.SysFont("times", 18, bold=False, italic=False)
@@ -301,6 +315,13 @@ def main(winstyle=0):
     Health.containers = hud
     WeaponType.containers = hud
     HomingMissile.containers = shots, all
+
+    # Assign default images to each sprite class.
+    Player.image = pygame.image.load("data/player1.gif")
+    Alien.image = pygame.image.load("data/alien1.gif")
+    Shot.image = pygame.image.load("data/shot.gif")
+    Bomb.image = pygame.image.load("data/bomb.gif")
+    HomingMissile.image = pygame.image.load("data/shot.gif")
 
     # Create Some Starting Values.
     alienreload = ALIEN_RELOAD

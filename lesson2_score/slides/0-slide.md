@@ -333,13 +333,38 @@ First off, we're going to need to create a new sprite to store the health. If yo
 ### Your Turn
 
 1. Make a new sprite class called **Health**.
-2. Create an `__init__()` function.
-3. Inside this function, create the following:
+2. Set a `containers` class variable to store `None`.
+3. Create an `__init__()` function.
+4. Inside this function, create the following:
 * The font you want to use,
 * The initial message (`"Health: 10"`),
 * The sprite's image (the message rendered using the font),
 * The rect from the image.
-4. Finally, move the rect in place using the `move_ip()` function.
+5. Finally, move the rect in place using the `move_ip()` function.
+
+
+---
+
+## Setting the Sprite Group
+
+Now it's time to set which group(s) our sprite class should be a member of.
+In this case, our Health sprite is supposed to be part of the heads up display (HUD), so we need to add it to the `hud` group.
+
+Search for the following code:
+
+```python
+# Assign default groups to each sprite class.
+Player.containers = all
+Alien.containers = aliens, all, lastalien
+...
+```
+
+Add the following line of code here to set `hud` as the default group for `Health` sprites:
+
+```python
+Health.containers = hud
+```
+
 
 ---
 
@@ -350,15 +375,18 @@ Now we need to create an actual instance of this sprite.
 
 Search for the following code:
 
-![](../images/5_instantiation.png)
+```python
+# Initislize our starting sprites.
+player = Player()
+Alien()
+...
+```
 
 Create an instance of the health sprite by adding this line here:
 
 ```python
-health = Health(containers=hud)
+health = Health()
 ```
-
-The `containers` parameter specifies which **groups** we want this sprite to belong to (more on this another time).
 
 
 ---
@@ -374,7 +402,9 @@ Now if you run the game, you should see your health sprite displayed. You might 
 
 ```python
 class Health(Sprite):
-    def __init__(self, containers=()):
+    containers = None
+    
+    def __init__(self):
         Sprite.__init__(self, containers)
         self.font = pygame.font.SysFont('times', 20, bold=False, italic=False)
         self.message = "Health: 10"
@@ -392,7 +422,9 @@ To update the health, we're going to need to add a `lives` variable to store the
 
 ```python
 class Health(Sprite):
-    def __init__(self, containers=()):
+    ...
+    
+    def __init__(self):
         Sprite.__init__(self, containers)
         ...
         self.lives = 10
@@ -408,6 +440,28 @@ class Health(Sprite):
 1. Create a new function called `reduce_health()`.
 2. Just like we did with score, add code under the `reduce_health()` function that reduces the `lives` value, updates the message and renders the image.
 
+<details>
+    <summary>Stuck?</summary>
+
+```python
+class Health(Sprite):
+    containers = None
+
+    def __init__(self):
+        Sprite.__init__(self, self.containers)
+        self.font = pygame.font.SysFont('times', 20, bold=False, italic=False)
+        self.message = "Health: 10"
+        self.image = self.font.render(self.message, False, WHITE)
+        self.rect = self.image.get_rect()
+        self.rect.move_ip(SCREENRECT.width - 80, 5)
+        self.lives = 10
+
+    def reduce_health(self):
+        self.lives = self.lives - 1
+        self.message = "Health: " + str(self.lives)
+        self.image = self.font.render(self.message, False, WHITE)
+```
+</details>
 
 ---
 
@@ -417,17 +471,20 @@ Now that we've defined the function, we need to call it each time the player get
 
 ### Your Turn
 
-1. Search for the following code:
+1. Search for each time we call `player.kill()`.
+2. Replace `player.kill()` with `health.reduce_health()`.
 
-![](../images/7_alien_contact.png)
+<details>
+    <summary>Hint</summary>
 
-Replace `player.kill()` with `health.reduce_health()`.
+You should find `player.kill()` twice, once under each of the following comments:
 
-2. Search for the following code:
+`# Detect collisions between aliens and players.`
 
-![](../images/7_bomb_contact.png)
+and
 
-Replace `player.kill()` with `health.reduce_health()`.
+`# See if alien bombs hit the player.`
+</details>
 
 
 ---
@@ -442,6 +499,8 @@ Make sure you followed the previous steps exactly and your `Health` class looks 
 
 ```python
 class Health(Sprite):
+    containers = None
+    
     def __init__(self):
         Sprite.__init__(self, self.containers)
         self.font = pygame.font.SysFont("times", 18, bold=False, italic=False)
@@ -466,11 +525,19 @@ To fix this, do the following:
 
 1. Search for the following code:
 
-![](../images/8_draw.png)
+```python
+# Draw the scene.
+all.draw(screen)
+hud.draw(screen)
+pygame.display.update()
+```
 
 Just *before* this, add these two lines of code to kill the player if health reaches 0.
 
-![](../images/9_kill.png)
+```python
+if health.health == 0:
+    player.kill()
+```
 
 Now if you run the game, health should reduce each time you get hit, and when it reaches 0, you die!
 

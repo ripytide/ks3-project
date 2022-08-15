@@ -1,4 +1,4 @@
-# Session 5
+# Session 6
 
 ## Sound
 
@@ -9,7 +9,14 @@
 
 Search for the following code:
 
-![](../../extra/images/load_sound.png)
+```python
+# Load the sound effects.
+boom_sound = pygame.mixer.Sound("data/boom.wav")
+shoot_sound = pygame.mixer.Sound("data/car_door.wav")
+if pygame.mixer:
+    pygame.mixer.music.load("data/house_lo.wav")
+    pygame.mixer.music.play(loops=-1)
+```
 
 This demonstrates how to load sound effects and music to the game.
 Here we load two sounds and store them in variables called `boom_sound` and `shoot_sound`.
@@ -20,6 +27,7 @@ We also load a music file called "house_lo.wav".
 1. Find alternative sounds and music*.
 2. Make sure to move them to the `data/` folder.
 3. Replace the sounds and music in the code above with your own.
+4. Run the game to hear your new sounds play throughout the game.
 
 \* When looking for music and sound effects online, search for results that are copyright free (you're allowed to download and use) and royalty free (you don't have to pay money for).
 
@@ -40,6 +48,12 @@ For music, you can specify the number of times you want the music to loop (repea
 ### Your Turn
 
 Can you find all the places where we trigger our sound effects to play?
+
+<details>
+    <summary>Hint</summary>
+
+Search for `.play()`.
+</details>
 
 
 ---

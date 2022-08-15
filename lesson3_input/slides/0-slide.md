@@ -89,6 +89,19 @@ Can you write if statements to check if someone is a teenager based on their age
 What about an adult?
 
 
+<details>
+    <summary>Stuck?</summary>
+
+```python
+age = int(input("Enter your age: "))
+if age > 10 and age < 18:
+    print("Teenager")
+if age >= 18:
+    print("Adult")
+```
+</details>
+
+
 ---
 
 ## Nesting
@@ -142,6 +155,22 @@ elif <condition>:
 
 Can you rewrite the code in the previous example using `elif`?
 
+<details>
+    <summary>Stuck?</summary>
+
+```python
+age = int(input("Enter your age: "))
+if age < 0 or age > 120:
+    print("Invalid")
+elif age > 0 and age < 10:
+    print("Child")
+elif age > 10 and age < 18:
+    print("Teenager")
+else:
+    print("Adult")
+```
+</details>
+
 
 ---
 
@@ -149,7 +178,7 @@ Can you rewrite the code in the previous example using `elif`?
 
 In Pygame, events can occur throughout the game.
 These include key presses and mouse movement.
-We can use if statements to check the type of event that has occurred. 
+We can use IF statements to check the type of event that has occurred. 
 
 Search for the following code to see this in action:
 
@@ -184,6 +213,24 @@ Can you add some `elif` statements to check for different key presses?
 Inside each if statement, use `print()` to output which key was pressed.
 
 Now if you run the game and press those keys, you should see the correct output in the console window.
+
+<details>
+    <summary>Hint</summary>
+
+Here's an example of an `elif` statement being used.
+Can you add your own?
+```python
+# Get input.
+for event in pygame.event.get():
+    if event.type == pygame.QUIT:
+        return
+    elif event.type == pygame.KEYDOWN:
+        if event.key == pygame.K_ESCAPE:
+            return
+        elif event.key == pygame.K_a:
+            print("The 'a' key was pressed.")
+```
+</details>
 
 
 ---
@@ -223,6 +270,26 @@ Choose a different name for each type of weapon (1, 2 and 3).
 Make sure that one of them is "Default".
 
 4. Run the game and press the buttons 1, 2 and 3 to confirm that the correct choice of weapon is displayed.
+
+<details>
+    <summary>Stuck?</summary>
+
+```python
+# Get input.
+for event in pygame.event.get():
+    if event.type == pygame.QUIT:
+        return
+    elif event.type == pygame.KEYDOWN:
+        if event.key == pygame.K_ESCAPE:
+            return
+        elif event.key == 0:
+            weapon_type.set_weapon("Default")
+        elif event.key == 1:
+            weapon_type.set_weapon("Homing Missiles")
+        elif event.key == 2:
+            weapon_type.set_weapon("Rapid Fire")
+```
+</details>
 
 
 ---
@@ -284,11 +351,32 @@ if keystate[pygame.K_0]:
 
 4. For each key, change the value of the `horizontal` and `vertical` variables accordingly.
 
-* A (-5 horizontal) 
-* D (5 horizontal)
-* W (-5 vertical)
-* S (5 vertical)
+* 'A' keypress —> set horizontal to -5 
+* 'D' keypress —> set horizontal to 5
+* 'W' keypress —> set vertical to -5
+* 'S' keypress —> set vertical to 5
 
+<details>
+    <summary>Stuck?</summary>
+
+```python
+def update(self):
+    horizontal = 0
+    vertical = -5
+    keystate = pygame.key.get_pressed()
+    if keystate[pygame.K_a]:
+        horizontal = -5
+    elif keystate[pygame.K_d]:
+        horizontal = 5
+    elif keystate[pygame.K_w]:
+        horizontal = -5
+    elif keystate[pygame.K_s]:
+        horizontal = 5
+    self.rect.move_ip(horizontal, vertical)
+    if self.rect.top <= 0:
+        self.kill()
+```
+</details>
 
 ---
 
@@ -300,7 +388,17 @@ Now that we've defined how a `HomingMissile` sprite should behave, we can add th
 
 1. Search for the following code:
 
-![](../../extra/images/player_input.png)
+```python
+# Handle player input.
+direction = keystate[pygame.K_RIGHT] - keystate[pygame.K_LEFT]
+player.move(direction)
+firing = keystate[pygame.K_SPACE]
+if not player.reloading and firing and len(shots) < MAX_SHOTS:
+    Shot(player.gunpos())
+    if pygame.mixer:
+        shoot_sound.play()
+player.reloading = firing
+```
 
 At the moment, if the conditions are met, we create a new `Shot` sprite when the user fires their weapon.
 
@@ -310,7 +408,22 @@ Shot(player.gunpos())
 
 2. Can you change this code so that it only creates a `Shot` if `weapon_type.weapon` is set to "Default"?
 
-3. Next, write an elif statement to create a `HomingMissile` sprite instead if one of the other weapon types is chosen.
+3. Next, write an else statement to create a `HomingMissile` sprite instead if a different weapon type is chosen.
+
+4. Now if you run your code, you should be able to press the '1' key to switch to homing missiles.
+Once this weapon type is selected you'll be able to control it using the WASD keys.
+
+<details>
+    <summary>Stuck?</summary>
+
+```python
+if not player.reloading and firing and len(shots) < MAX_SHOTS:
+    if weapon_type.weapon == "Default":
+        Shot(player.gunpos())
+    else:
+        HomingMissile(player.gunpos())
+```
+</details>
 
 
 ---
@@ -328,7 +441,24 @@ Shot((x, y - 60))
 
 ### Your Turn
 
-Can you add another elif statement that checks for the final weapon type and runs the above code if it's selected?
+Can you add an elif statement that checks for a different weapon type and then runs the above code if it's selected?
+
+<details>
+    <summary>Stuck?</summary>
+
+```python
+if not player.reloading and firing and len(shots) < MAX_SHOTS:
+    if weapon_type.weapon == "Default":
+        Shot(player.gunpos())
+    elif weapon_type.weapon == "Rapid Fire":
+        x, y = player.gunpos()
+        Shot((x, y))
+        Shot(x, y - 30)
+        Shot((x, y - 60))
+    else:
+        HomingMissile(player.gunpos())
+```
+</details>
 
 
 ---

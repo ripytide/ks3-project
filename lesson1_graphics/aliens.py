@@ -184,7 +184,7 @@ def main(winstyle=0):
     Explosion.images = [img, pygame.transform.flip(img, 1, 1)]
 
     # Decorate the game window.
-    pygame.display.set_caption("Pygame Aliens")
+    pygame.display.set_caption("Paolo's game")
     icon = pygame.image.load("data/alien1.gif")
     icon = pygame.transform.scale(icon, (32, 32))
     pygame.display.set_icon(icon)

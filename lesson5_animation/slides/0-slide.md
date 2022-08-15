@@ -1,4 +1,4 @@
-# Session 6
+# Session 5
 
 ## Animation
 
@@ -70,10 +70,12 @@ Using the Python Console...
 If you want to access the value in a variable or change its value, we could just refer to the label like so:
 
 ```python
-age = 12
-print(age)
-age = 13
-print(age)
+>>> age = 12
+>>> print(age)
+12
+>>> age = 13
+>>> print(age)
+13
 ```
 
 To access individual items within an array, we need to use an index.
@@ -84,10 +86,12 @@ The index always starts from 0 (the first item).
 So to access the third item in the array, we use:
 
 ```python
-avengers = ["Iron Man", "Hulk", "Thor", "Captain America", "Black Widow", "Hawkeye"]
-print(avengers[2])
-avengers[2] = "Spider-Man"
-print(avengers[2])
+>>> avengers = ["Iron Man", "Hulk", "Thor", "Captain America", "Black Widow", "Hawkeye"]
+>>> print(avengers[2])
+Thor
+>>> avengers[2] = "Spider-Man"
+>>> print(avengers[2])
+Spider-Man
 ```
 
 
@@ -159,7 +163,12 @@ Our `data/` folder contains three images for the aliens ('alien1.gif', 'alien2.g
 
 Our `Alien` sprite class has an array for images called `images`.
 
-![](../../extra/images/alien_class.png)
+```python
+class Alien(Sprite):
+    speed = 13
+    images = [None, None, None]
+    ...
+```
 
 
 ---
@@ -168,7 +177,12 @@ Our `Alien` sprite class has an array for images called `images`.
 
 1. Search for the following code. This is where we'll load our images.
 
-![](../../extra/images/load_images.png)
+```python
+# Load images, assign to sprite classes.
+# (do this before the classes are used, after screen setup)
+img = pygame.image.load("data/explosion1.gif")
+Explosion.images = [img, pygame.transform.flip(img, 1, 1)]
+```
 
 2. Write a FOR loop that iterates from 0 to 3.
 
@@ -178,6 +192,16 @@ Join `"data/alien"` with `(i+1)` and `".gif"` and store the resulting string in 
 4. Use the `pygame.image.load()` function to load the image at the given `filepath`.
 
 5. Store this image in the `Alien.images` array at position `i`.
+
+<details>
+    <summary>Stuck?</summary>
+
+```python
+for i in range(0, 3):
+    filepath = "data/alien" + str(i+1) + ".gif"
+    Alien.images[i] = pygame.image.load(filepath)
+```
+</details>
 
 
 ---
@@ -192,6 +216,7 @@ From there, we want to change the alien's current image to cycle through those i
 
 1. Search for the `__init__()` initialisation function under the `Alien` sprite class.
 2. Add a new variable here called `anim_index` to store 0 as the initial index.
+Remember, it should start with `self.` so it can be accessed within the class. 
 3. Search for the `update()` function under the `Alien` sprite class. 
 The code here gets triggered every frame of the game.
 
@@ -200,6 +225,38 @@ The code here gets triggered every frame of the game.
 6. Use an IF statement to check if it equals the length of the `images` array.
 7. If so, reset the `anim_index` to 0.
 8. Run the code and you should see the aliens' lights flashing!
+
+<details>
+    <summary>Stuck?</summary>
+
+```python
+class Alien(Sprite):
+    speed = 13
+    images = [None, None, None]
+    image = None
+    containers = None
+
+    def __init__(self):
+        Sprite.__init__(self, self.containers)
+        self.image = pygame.transform.scale(self.image, (80, 71))
+        self.rect = self.image.get_rect()
+        self.facing = random.choice((-1, 1)) * Alien.speed
+        if self.facing < 0:
+            self.rect.right = SCREENRECT.right
+        self.anim_index = 0
+
+    def update(self):
+        self.rect.move_ip(self.facing, 0)
+        if not SCREENRECT.contains(self.rect):
+            self.facing = -self.facing
+            self.rect.top = self.rect.bottom + 1
+            self.rect = self.rect.clamp(SCREENRECT)
+        self.image = self.images[self.anim_index]
+        self.anim_index = self.anim_index + 1
+        if self.anim_index == len(self.images):
+            self.anim_index = 0
+```
+</details>
 
 
 ---
