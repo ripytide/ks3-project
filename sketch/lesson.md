@@ -70,7 +70,7 @@ To close the window, either press the red circle with your mouse or the ESCAPE k
 
 ## Circles
 
-At this point your Python file should like this:
+At this point your Python file should look like this:
 
 ```python
 from sketch import Window
@@ -214,12 +214,12 @@ As an extra challenge, can you get the user to input values for the other option
 i.e. the amounts of red, green and blue in the colour as well as the x and y coordinates of the centre?
 
 ```python
-Enter radius: 100
-Enter x: 150
-Enter y: 125
-Enter red: 10
-Enter green: 200
-Enter blue: 153
+>>> Enter radius: 100
+>>> Enter x: 150
+>>> Enter y: 125
+>>> Enter red: 10
+>>> Enter green: 200
+>>> Enter blue: 153
 ```
 
 ![sketch input all](../extra/images/sketch_input_all.png)
