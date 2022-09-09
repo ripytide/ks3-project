@@ -32,16 +32,18 @@ class Window:
         """Draws a circle onto the screen."""
         pygame.draw.circle(self.screen, colour, centre, radius)
 
-    def square(self, colour: (int, int, int), centre: (int, int), width: int):
-        """Draws a square onto the screen."""
-        tl = tuple(map(lambda x: x - width // 2, centre))
-        rect = Rect(tl, (width, width))
-        pygame.draw.rect(self.screen, colour, rect)
-
     def rectangle(self, colour: (int, int, int), topleft: (int, int), width: int, height: int):
         """Draws a rectangle onto the screen."""
         rect = Rect(topleft, (width, height))
         pygame.draw.rect(self.screen, colour, rect)
+
+    def triangle(self, colour: (int, int, int), point1: (int, int), point2: (int, int), point3: (int, int)):
+        """Draws a triangle onto the screen."""
+        pygame.draw.polygon(self.screen, colour, (point1, point2, point3))
+
+    def line(self, colour: (int, int, int), start: (int, int), end: (int, int), width: int):
+        """Draws a line onto the screen."""
+        pygame.draw.line(self.screen, colour, start, end, width)
 
     def display(self):
         """Displays the screen with all shapes drawn on."""
