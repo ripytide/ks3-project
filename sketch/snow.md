@@ -4,6 +4,7 @@ In this worksheet we're going to make an image of snow falling against a sky bac
 
 ![snow image](examples/snow.JPEG)
 
+
 ---
 
 ## Step 1: Window Setup
@@ -28,6 +29,7 @@ If you run the code, you should see a blank canvas, like this:
 ![blank](../extra/images/sketch_window.png)
 
 From now on, all the code you write should go _after_ you create the window, but _before_ you display it.
+
 
 ---
 

@@ -64,6 +64,8 @@ Example:
 win.rectangle([255, 0, 0], [50, 100], 200, 55)
 ```
 
+![rectangle explanation](../extra/images/rectangle_explanation.jpg)
+
 
 ---
 
@@ -81,6 +83,8 @@ Example:
 win.circle([0, 255, 0], [300, 350], 45)
 ```
 
+![rectangle explanation](../extra/images/circle_explanation.jpg)
+
 
 ---
 
@@ -96,6 +100,8 @@ Example:
 ```python
 win.triangle([0, 0, 255], [300, 100], [300, 200], [350, 150])
 ```
+
+![rectangle explanation](../extra/images/triangle_explanation.jpg)
 
 
 ---
@@ -115,4 +121,4 @@ Example:
 win.line([0, 0, 0], [75, 175], [125, 300], 5)
 ```
 
-![example shapes](../extra/images/example_shapes.JPEG)
+![rectangle explanation](../extra/images/line_explanation.jpg)
