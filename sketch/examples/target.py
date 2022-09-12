@@ -1,21 +1,9 @@
 from sketch.sketch import Window
-
-
-def main():
-    win = Window(400, 400)
-    win.rectangle((100, 250, 100), (0, 0), 400, 400)
-    white = (255, 255, 255)
-    black = (0, 0, 0)
-    blue = (50, 50, 200)
-    red = (200, 50, 50)
-    yellow = (240, 240, 50)
-    colours = [white, black, blue, red, yellow]
-    centre = (200, 200)
-    radius = 200
-    for i in range(5):
-        win.circle(colours[i], centre, radius - 40 * i)
-    win.display()
-
-
-if __name__ == "__main__":
-    main()
+win = Window(400, 400)
+win.rectangle([100, 250, 100], [0, 0], 400, 400)
+win.circle([255, 255, 255], [200, 200], 200)
+win.circle([0, 0, 0], [200, 200], 160)
+win.circle([50, 50, 200], [200, 200], 120)
+win.circle([200, 50, 50], [200, 200], 80)
+win.circle([240, 240, 50], [200, 200], 40)
+win.display()
