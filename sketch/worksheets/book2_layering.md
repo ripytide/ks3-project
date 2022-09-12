@@ -6,7 +6,7 @@ In this worksheet we're going to layer shapes on top of each other to create mor
 We'll start by creating this image of an archery target step by step.
 Then you'll get the chance to explore other designs and create your own.
 
-![target](examples/target.JPEG)
+![target](../examples/target.JPEG)
 
 
 ---
@@ -29,7 +29,7 @@ Feel free to change the width and height to get a different sized screen.
 
 If you run the code, you should see a blank canvas, like this:
 
-![blank](../extra/images/sketch_window.png)
+![blank](../../extra/images/sketch_window.png)
 
 From now on, all the code you write should go _after_ you create the window, but _before_ you display it.
 
@@ -55,7 +55,7 @@ win.rectangle(<colour>, <topleft>, <width>, <height>)
 
 If you've done all that correctly, you should be able to run the code and see the following window:
 
-![green window](../extra/images/sketch_green_window.png)
+![green window](../../extra/images/sketch_green_window.png)
 
 
 ---
@@ -88,7 +88,7 @@ For the circle to fill the screen, the radius needs to be large enough to reach 
 Make sure this code goes _after_ your code for the background.
 Otherwise, the circle will get drawn first, then the background on top, covering the circle up.
 
-![white circle](../extra/images/sketch_white_circle.png)
+![white circle](../../extra/images/sketch_white_circle.png)
 
 
 ---
@@ -118,7 +118,7 @@ How much width should there be between each circle?
 Can you work out what the width of the smallest circle should be?
 </details>
 
-![target](../extra/images/target_explanation.jpg)
+![target](../../extra/images/target_explanation.jpg)
 
 
 ---
@@ -207,5 +207,5 @@ Have a go at recreating them using code.
 Do you have ideas for your own images?
 Try and generate them using rectangles, lines, circles and triangles.
 
-![layered images](../extra/images/layered_images.jpg)
+![layered images](../../extra/images/layered_images.jpg)
 
