@@ -4,36 +4,49 @@ import random
 
 def main():
     win = Window(500, 500)
-    # background
-    win.rectangle((40, 150, 250), (0, 0), 500, 500)
 
-    # sun
-    r = 40
-    g = 150
-    b = 250
-    for i in range(10):
-        r_new = round(r + (255 - r) * i / 10)
-        g_new = round(g + (255 - g) * i / 10)
-        b_new = round(b + (255 - b) * i / 10)
-        win.circle((r_new, g_new, b_new), (50, 50), 30 - i)
-    win.circle((255, 255, 255), (50, 50), 20)
+    # colours
+    sky_colour = [40, 150, 250]
+    brick_colour = [250, 200, 50]
+    brick_colour2 = [200, 150, 0]
+    brick_colour3 = [230, 180, 30]
+    white = [255, 255, 255]
+
+    # sky
+    win.rectangle(sky_colour, (0, 0), 500, 500)
+    #
+    # # sand
+    # win.rectangle(brick_colour3, [0, 430], 500, 70)
+    # sand_colour = list(brick_colour3)
+    # for i in range(21):
+    #     win.line(sand_colour, [0, 430 - i], [500, 430 - i], 1)
+    #     sand_colour = [sand_colour[i] + (sky_colour[i] - sand_colour[i]) / 21 for i in range(3)]
+    #
+    # # pyramid
+    # win.triangle(brick_colour, [50, 450], [250, 200], [250, 500])
+    # win.triangle(brick_colour2, [250, 200], [250, 500], [450, 450])
+    #
+    # # sun
+    # sun_colour = list(sky_colour)
+    # sun_diff = [(white[i] - sun_colour[i]) / 20 for i in range(3)]
+    # for i in range(20):
+    #     win.circle(sun_colour, [50, 50], 40 - i)
+    #     sun_colour = [sun_colour[j] + sun_diff[j] for j in range(3)]
+    # win.circle(white, [50, 50], 20)
 
     # pyramid
-    brick = (250, 200, 50)
-    grunge = (200, 150, 10)
-    for i in range(6):
-        width = 360 - i * 60
-        x = 250 - 0.5 * width
-        y = 460 - i * 40
-        win.rectangle(brick, (x, y), width, 40)
 
-        # grunge
-        for j in range(6 - i):
-            w = random.randint(7, 10)
-            h = random.randint(3, 4)
-            xg = random.randint(x, x + width - 10)
-            yg = random.randint(y, y + 36)
-            win.rectangle(grunge, (xg, yg), w, h)
+    pyramid_colour = [250, 200, 50]
+    x = 70
+    y = 499
+    width = 360
+    win.rectangle(pyramid_colour, (x, y), width, 1)
+    for i in range(180):
+        y = y - 1
+        x = x + 1
+        width = width - 2
+        win.rectangle(pyramid_colour, (x, y), width, 1)
+
     win.display()
 
 
