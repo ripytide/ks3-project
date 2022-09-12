@@ -3,9 +3,11 @@ import random
 
 
 def main():
-    win = Window(400, 400)
-    win.rectangle((100, 250, 100), (0, 0), 400, 400)
-    win.circle([255, 255, 255], [200, 200], 200)
+    win = Window(500, 500)
+    for y in range(500):
+        for x in range(500):
+            i = random.randint(0, 255)
+            win.rectangle([i, i, i], [x, y], 1, 1)
     win.display()
 
 

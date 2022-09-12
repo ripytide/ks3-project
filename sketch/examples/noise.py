@@ -1,16 +1,16 @@
-from sketch import Window
+from sketch.sketch import Window
 import random
 
 
 def main():
     win = Window(500, 500)
 
-    for y in range(50):
-        for x in range(50):
+    for y in range(500):
+        for x in range(500):
             r = random.randint(0, 255)
             g = random.randint(0, 255)
             b = random.randint(0, 255)
-            win.rectangle((r, g, b), (10 * x, 10 * y), 10, 10)
+            win.rectangle((r, r, r), (x, y), 1, 1)
 
     win.display()
 

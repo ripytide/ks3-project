@@ -1,4 +1,4 @@
-# Snow
+# Random
 
 In this worksheet we're going to make an image of snow falling against a sky background.
 
@@ -125,6 +125,8 @@ If you run the code, you should see snowballs with different sizes:
 
 ## Challenges
 
+## Task 1
+
 Can you change the values we set in the program to give the scene a different look and feel?
 Some examples are:
 
@@ -135,3 +137,25 @@ Some examples are:
 Can you make it so the snowballs gradually get larger further down the screen?
 
 ![snow 2](examples/snow2.JPEG)
+
+## Task 2
+
+How about random noise?
+The image on the left is one where every pixel is a randomly chosen colour.
+The image on the right is the same, but only greyscale colours are used.
+
+<details>
+    <summary>Hint 1</summary>
+
+Use a rectangle with width and height of 1 to set an individual pixel.
+</details>
+
+<details>
+    <summary>Hint 2</summary>
+
+Use a nested FOR loop to iterate over each pixel.
+In other words, an outer FOR loop to iterate over each row `x` from 0 to the height of the screen;
+and an inner FOR loop to iterate over each column `y` from 0 to the width of the screen.
+</details>
+
+![noise](../extra/images/noise.jpg)
