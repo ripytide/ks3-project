@@ -2,7 +2,7 @@
 
 In this worksheet we're going to make an image of snow falling against a sky background.
 
-![snow image](examples/snow.JPEG)
+![snow image](../examples/snow.JPEG)
 
 
 ---
@@ -26,7 +26,7 @@ Feel free to change the width and height to get a different sized screen.
 
 If you run the code, you should see a blank canvas, like this:
 
-![blank](../extra/images/sketch_window.png)
+![blank](../../extra/images/sketch_window.png)
 
 From now on, all the code you write should go _after_ you create the window, but _before_ you display it.
 
@@ -55,7 +55,7 @@ win.rectangle(<colour>, <topleft>, <width>, <height>)
 
 If you run the code now, you should see something like this:
 
-![blue background](../extra/images/sketch_blue.png)
+![blue background](../../extra/images/sketch_blue.png)
 
 
 ---
@@ -81,7 +81,7 @@ Play around with different sized radii until you get something you like.
 win.circle(<colour>, <centre>, <radius>)
 ```
 
-![snowball](../extra/images/sketch_snowball.png)
+![snowball](../../extra/images/sketch_snowball.png)
 
 
 ---
@@ -105,7 +105,7 @@ To generate lots of snowballs, we're going to use the following algorithm:
 
 All in all, this should create 100 snowballs, with each one at a random position on the screen!
 
-![snow](../extra/images/sketch_snow.png)
+![snow](../../extra/images/sketch_snow.png)
 
 ---
 
@@ -120,7 +120,7 @@ If you run the code, you should see snowballs with different sizes:
 
 (You might need to play around with the range of random values)
 
-![random snow](../extra/images/sketch_random_snow.png)
+![random snow](../../extra/images/sketch_random_snow.png)
 
 
 ## Challenges
@@ -136,7 +136,7 @@ Some examples are:
 
 Can you make it so the snowballs gradually get larger further down the screen?
 
-![snow 2](examples/snow2.JPEG)
+![snow 2](../examples/snow2.JPEG)
 
 ## Task 2
 
@@ -158,4 +158,4 @@ In other words, an outer FOR loop to iterate over each row `x` from 0 to the hei
 and an inner FOR loop to iterate over each column `y` from 0 to the width of the screen.
 </details>
 
-![noise](../extra/images/noise.jpg)
+![noise](../../extra/images/noise.jpg)
