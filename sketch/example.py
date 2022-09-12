@@ -3,11 +3,18 @@ import random
 
 
 def main():
-    win = Window(500, 500)
-    for y in range(500):
-        for x in range(500):
-            i = random.randint(0, 255)
-            win.rectangle([i, i, i], [x, y], 1, 1)
+    square_width = 50
+    width = square_width * 9
+    height = square_width * 9
+    win = Window(width, height)
+
+    win.rectangle([0, 0, 0], [0, 0], width, height)
+
+    for row in range(0, 9):
+        for col in range(0, 9):
+            x = col * square_width + 1
+            y = row * square_width + 1
+            win.rectangle([255, 255, 255], [x, y], square_width - 2, square_width - 2)
     win.display()
 
 
