@@ -62,7 +62,7 @@ win.rectangle(<colour>, <topleft>, <width>, <height>)
 
 Example:
 ```python
-win.rectangle([255, 0, 0], [50, 100], 200, 55)
+win.rectangle([39, 194, 116], [60, 50], 400, 80)
 ```
 
 ![rectangle explanation](../extra/images/rectangle_explanation.jpg)
@@ -81,7 +81,7 @@ win.circle(<colour>, <centre>, <radius>)
 
 Example:
 ```python
-win.circle([0, 255, 0], [300, 350], 45)
+win.circle([200, 100, 200], [250, 250], 200)
 ```
 
 ![rectangle explanation](../extra/images/circle_explanation.jpg)
@@ -99,7 +99,7 @@ win.triangle(<colour>, <point1>, <point2>, <point3>)
 
 Example:
 ```python
-win.triangle([0, 0, 255], [300, 100], [300, 200], [350, 150])
+win.triangle([200, 200, 100], [50, 250], [300, 75], [400, 400])
 ```
 
 ![rectangle explanation](../extra/images/triangle_explanation.jpg)
@@ -119,7 +119,7 @@ win.line(<colour>, <start>, <end>, <width>)
 
 Example:
 ```python
-win.line([0, 0, 0], [75, 175], [125, 300], 5)
+win.line([255, 0, 0], [50, 50], [400, 400], 10)
 ```
 
 ![rectangle explanation](../extra/images/line_explanation.jpg)
