@@ -120,3 +120,16 @@ If you run the code, you should see snowballs with different sizes:
 
 ![random snow](../extra/images/sketch_random_snow.png)
 
+
+## Challenges
+
+Can you change the values we set in the program to give the scene a different look and feel?
+Some examples are:
+
+* The background (Light or dark? A different colour?)
+* Size of snowballs (generally small or large?)
+* Size variation between snowballs (little or lots of variation?)
+
+Can you make it so the snowballs gradually get larger further down the screen?
+
+![snow 2](examples/snow2.JPEG)

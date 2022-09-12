@@ -5,10 +5,13 @@ import random
 def main():
     win = Window(500, 500)
 
-    win.rectangle([255, 0, 0], [50, 100], 200, 55)
-    win.circle([0, 255, 0], [300, 350], 45)
-    win.line([0, 0, 0], [75, 175], [125, 300], 5)
-    win.triangle([0, 0, 255], [300, 100], [300, 200], [350, 150])
+    size = input("How big is your creature? (small/medium/large): ")
+    legs = input("How many legs does your creature have? (enter a positive integer): ")
+    eyes = input("How many eyes does your creature have? (enter a positive integer): ")
+    print("What is the main colour of your creature?")
+    red = input("Enter amount of red (0-255): ")
+    green = input("Enter amount of green (0-255): ")
+    blue = input("Enter amount of blue (0-255): ")
 
     win.display()
 
