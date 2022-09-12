@@ -16,6 +16,7 @@ win.display() # displays the window
 ### Screenshots
 
 To save one of your images, run the code and with the window open, press the ENTER/RETURN key on your keyboard.
+Once you close the window, your screen capture will be saved.
 
 
 ---
