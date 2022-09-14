@@ -18,7 +18,7 @@ This is very important in games where we may need to check if...
 
 Today we're going to add collectible power-ups to the game.
 
-![](../../extra/images/powerup.png)
+![](../../../extra/images/powerup.png)
 
 
 ---

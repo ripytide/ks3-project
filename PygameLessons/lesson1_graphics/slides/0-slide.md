@@ -246,7 +246,7 @@ How many sprites are there and what are they called?
 A sprite class is like the blueprints for creating a sprite.
 In it, we define what a sprite of that particular class should have and how it should behave.
 
-![](../../extra/images/sprite_class_1.jpg)
+![](../../../extra/images/sprite_class_1.jpg)
 
 
 ---
@@ -255,7 +255,7 @@ In it, we define what a sprite of that particular class should have and how it s
 
 There are a few things that every sprite class needs:
 
-![](../../extra/images/sprite_class_2.jpg)
+![](../../../extra/images/sprite_class_2.jpg)
 
 ![](../images/10_player.png)
 
@@ -374,9 +374,9 @@ self.image.set_colorkey((255, 0, 0))
 
 This will make the red colour in the image transparent.
 
-![](../../extra/images/chimp1.bmp)
+![](../../../extra/images/chimp1.bmp)
 
-![](../../extra/images/chimp2.bmp)
+![](../../../extra/images/chimp2.bmp)
 
 ### Your Turn
 

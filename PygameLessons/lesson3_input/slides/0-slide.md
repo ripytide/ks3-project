@@ -11,7 +11,7 @@ In this session, we're going to learn how to handle user input and select betwee
 
 We'll give the user the ability to choose different types of weapons during the game.
 
-![](../../extra/images/weapon_homing_missile.png)
+![](../../../extra/images/weapon_homing_missile.png)
 
 First, we need to learn about selection.
 
@@ -22,7 +22,7 @@ First, we need to learn about selection.
 
 Often in programming we want to choose, or select, between different options and do different things depending on the decision.
 
-![](../../extra/images/flowchart1.jpg)
+![](../../../extra/images/flowchart1.jpg)
 
 ```python
 number = int(input("Enter a number: "))
@@ -108,7 +108,7 @@ if age >= 18:
 
 Sometimes we might have a tree of possibilities.
 
-![](../../extra/images/flowchart3.jpg)
+![](../../../extra/images/flowchart3.jpg)
 
 'Nesting' is where we have an if statement inside another if/else statement.
 
@@ -241,7 +241,7 @@ Great! Now let's use key presses to select a different weapon.
 
 The `weapon_type` variable is a `WeaponType` sprite, which displays text showing the chosen weapon.
 
-![](../../extra/images/weapon_type_default.png)
+![](../../../extra/images/weapon_type_default.png)
 
 At the moment it always displays `Weapon: Default`.
 
@@ -256,7 +256,7 @@ Search for the `WeaponType` sprite class. Can you see what function it has for u
 
 1. Go back to the event-checking code:
 
-![](../../extra/images/event_checker.png)
+![](../../../extra/images/event_checker.png)
 
 2. Add some `elif` statements to check if the user pressed the `1`, `2` or `3` number keys.
 

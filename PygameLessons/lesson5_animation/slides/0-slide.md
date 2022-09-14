@@ -14,7 +14,7 @@ What we want to do is have images that actually change,
 like a character that walks instead of just glides around the screen, 
 stuck in the same pose.
 
-![](../../extra/images/different_aliens.png)
+![](../../../extra/images/different_aliens.png)
 
 Notice in the image that some aliens are different?
 We're going to animate the alien's image so that its lights flash different colours.
@@ -24,11 +24,11 @@ We're going to animate the alien's image so that its lights flash different colo
 
 ## Animation Sequences
 
-![](../../extra/images/walk_cycle.png)
+![](../../../extra/images/walk_cycle.png)
 
 An animation is just a sequence of images played one after the other to give the illusion of motion.
 
-![](../../extra/images/walk_cycle.svg)
+![](../../../extra/images/walk_cycle.svg)
 
 
 ---
@@ -81,7 +81,7 @@ If you want to access the value in a variable or change its value, we could just
 To access individual items within an array, we need to use an index.
 The index always starts from 0 (the first item).
 
-![](../../extra/images/array.jpg)
+![](../../../extra/images/array.jpg)
 
 So to access the third item in the array, we use:
 
@@ -159,7 +159,7 @@ The first step is to load each image in our animation sequence and store them in
 
 Our `data/` folder contains three images for the aliens ('alien1.gif', 'alien2.gif' and 'alien3.gif').
 
-![](../../extra/images/alien_images.png)
+![](../../../extra/images/alien_images.png)
 
 Our `Alien` sprite class has an array for images called `images`.
 
@@ -266,6 +266,6 @@ class Alien(Sprite):
 Search for free 2D image sequences online and add more animations to the game.
 How about...
 1. More realistic explosions?
-2. 3. Animated background elements?
+2. Animated background elements?
 3. A new humanoid sprite for the player with a walk cycle?
 
