@@ -4,7 +4,7 @@ In this worksheet, we're going to create a program that allows the user to gener
 
 Make sure you have the cheat sheet open - it tells you everything you need to know to use the Sketch module.
 
-![shapes](../../extra/images/example_shapes.JPEG)
+![example shapes](../.data/example_shapes.JPEG)
 
 
 ---
@@ -37,7 +37,7 @@ Finally, when your program reaches this line of code, it will display the window
 
 If you run the code, you should see a blank canvas, like this:
 
-![blank](../../extra/images/sketch_window.png)
+![blank window](../.data/blank_window.png)
 
 To close the window, press the red circle or the ESCAPE key.
 
@@ -65,7 +65,7 @@ win.circle([0, 0, 0], [250, 250], 200)
 
 If you run your code, you should see the following image:
 
-![black circle](../../extra/images/sketch_black_circle.JPEG)
+![black circle](../.data/black_circle.JPEG)
 
 
 ---
@@ -131,7 +131,7 @@ Now if you run the code, you should hopefully see something like this:
 
 Then once you've entered some valid values, a window should appear:
 
-![pink circle](../../extra/images/sketch_pink_circle.png)
+![pink circle 1](../.data/pink_circle_1.png)
 
 
 ---
@@ -166,7 +166,7 @@ Enter the y position of the centre: 59
 
 After entering all the values, the window should appear again:
 
-![pink circle 2](../../extra/images/sketch_pink_circle_2.png)
+![pink circle 2](../.data/pink_circle_2.png)
 
 By using different values for the x and y position, can you work out where the (0, 0) coordinate is on the screen?
 Which way do the axes go?
@@ -203,7 +203,7 @@ Enter the radius: 127
 
 And as always, the circle will be generated:
 
-![pink circle 3](../../extra/images/sketch_pink_circle_3.png)
+![pink circle 3](../.data/pink_circle_3.png)
 
 
 ---

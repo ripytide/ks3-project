@@ -1,33 +1,38 @@
-This folder contains the following files:
+# Sketch
 
-sketch.py (a Python module)
+Sketch is a Python module you can use to draw images with code.
 
-cheat_sheet.md (a summary sheet of the sketch module)
+![sketch examples](../extra/images/sketch_examples.jpg)
 
-examples (a folder with example projects)
-
-worksheets (a folder with the lesson worksheets)
 
 ---
 
-The **sketch.py** module is a simple wrapper for Pygame.
-It provides a Window class with methods for drawing shapes on the screen.
+## Requirements
 
-The **examples** folder contains demonstrations of simple images created using the sketch module.
+You will need to install Python and Pygame before using the sketch module.
 
-The **worksheets** folder contains markdown files of the worksheets for lessons 1 to 6.
-They are intended to be used in conjunction with sketch.py and cheat_sheet.md.
+### Install Python
+1. Click on this link to go to the Python downloads page: https://www.python.org/downloads/
+2. Press the orange button to download the latest version of Python for your operating sytem.
+3. Once the file has downloaded, open it and follow the instructions. When it asks you whether you want to install `pip`, make sure to tick this box!
+
+### Install Pygame
+4. Open the `Terminal` application (Mac/Linux) or `Command Prompt` (Windows).
+5. Copy and paste this command into the terminal: `python3 -m pip install -U pygame --user` and then press the `return` key on your keyboard.
+6. If all has gone well, you should be able to copy and paste the following command into your terminal: `python3 -m pygame.examples.aliens`. After pressing the `return` key again, a small window should appear, allowing you to play a game of `Aliens`.
+
+### Install the Sketch module
+7. Finally, open the following page in your web browser: https://github.com/PaoloMura/ks3-project
+8. Click on the green button marked `code` and then select `Download ZIP` to download the ZIP file.
+9. On Mac, double-click the file. On Windows, right click the file, select `extract all` and then follow the instructions.
+10. You should be able to find the sketch folder within this folder.
+
 
 ---
 
-It's assumed that students already have an understanding of the following Python concepts:
-1. Variables, constants, declaration and assignment
-2. Input and output
-3. Type casting
-4. 1D arrays
-5. Random number generation 
-6. Selection with IF 
-7. Iteration with FOR
-8. 2D arrays
+## Getting Started
 
-The difficulty level of worksheets increases from lessons 1 to 6, with topics such as 2D arrays only being used in the final worksheets.
+Read the `cheat-sheet.md` file - it tells you how to use the `sketch` module. 
+
+Either follow the lessons in the `worksheets` folder, or just freestyle!
+
