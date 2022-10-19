@@ -52,7 +52,7 @@ The top left pixel is at coordinate (0,0).
 The x-axis goes horizontally from left to right.
 The y-axis goes vertically from top to bottom.
 
-![coordinates](../extra/images/coordinates.jpg)
+![coordinates](.data/coordinates.jpg)
 
 
 ---
@@ -72,7 +72,7 @@ Example:
 win.rectangle([39, 194, 116], [60, 50], 400, 80)
 ```
 
-![rectangle explanation](../extra/images/rectangle_explanation.jpg)
+![rectangle explanation](.data/rectangle_explanation.jpg)
 
 
 ---
@@ -91,7 +91,7 @@ Example:
 win.circle([200, 100, 200], [250, 250], 200)
 ```
 
-![rectangle explanation](../extra/images/circle_explanation.jpg)
+![rectangle explanation](.data/circle_explanation.jpg)
 
 
 ---
@@ -109,7 +109,7 @@ Example:
 win.triangle([200, 200, 100], [50, 250], [300, 75], [400, 400])
 ```
 
-![rectangle explanation](../extra/images/triangle_explanation.jpg)
+![rectangle explanation](.data/triangle_explanation.jpg)
 
 
 ---
@@ -129,4 +129,4 @@ Example:
 win.line([255, 0, 0], [50, 50], [400, 400], 10)
 ```
 
-![rectangle explanation](../extra/images/line_explanation.jpg)
+![rectangle explanation](.data/line_explanation.jpg)

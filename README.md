@@ -26,4 +26,4 @@ Each lesson has a folder which you should open with PyCharm. It contains the fol
 
 In PyCharm you can double click on the .md worksheet and Python file to keep them open and drag the worksheet to the side so you can see both side-by-side.
 
-![](./extra/images/IDE.png)
+![](pygame/.data/IDE.png)
