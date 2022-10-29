@@ -1,29 +1,14 @@
-# KS3 Coding Project
+# KS3 Project
 
-## Prerequisites
+This repository contains resources designed for coding clubs at secondary schools in Bristol.
+There are two sets of resources: Sketch and Pygame.
+Each one includes a set of six worksheets for students to follow during the term.
 
-PyCharm* - follow instructions to download the Community Edition here: https://www.jetbrains.com/pycharm/download/
+The Sketch resource provides a Python module called `sketch.py`.
+This is a wrapper for Pygame that exposes a very small set of functionality.
+With it, students can draw shapes onto a window using a simple interface.
+Each worksheet takes the student through creating an image using these commands.
 
-Python - https://www.python.org/downloads/
-
-pip - https://pip.pypa.io/en/stable/
-
-PyGame - https://www.pygame.org/wiki/GettingStarted
-
-\*
-*Although other IDEs (Visual Studio, IDLE, etc.) would be equally suitable, these tutorials include some instructions on how to use the PyCharm IDE for beginners. If you're already comfortable editing and running Python scripts and can access the Python interpreter, feel free to stick with your favourite IDE.*
-
-
-## Following the Worksheets
-
-Either clone the repo or download it as a .ZIP file (click on the green button that says 'Code').
-
-Each lesson has a folder which you should open with PyCharm. It contains the following:
-
-* `slides/0-slide.md` (the worksheet to be followed)
-* `aliens.py` (the starter code to be edited)
-* `data/` (assets such as images and sounds to be used in the game)
-
-In PyCharm you can double click on the .md worksheet and Python file to keep them open and drag the worksheet to the side so you can see both side-by-side.
-
-![](pygame/.data/IDE.png)
+The Pygame resource teaches the fundamentals of Python programming and the Pygame syntax.
+By the end of the worksheets, students should have enough knowledge to create their own games with Pygame.
+Unlike Sketch, each worksheet teaches some new concepts while asking the student to modify some given starter code.
