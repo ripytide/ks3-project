@@ -11,7 +11,7 @@ Create a new Python file and give it a name. Make sure it lives in the same fold
 ### Window Setup
 
 ```python
-from Sketch import Window # imports code from the sketch module
+from sketch import Window # imports code from the sketch module
 win = Window(500, 500) # creates a 500x500 pixel window called 'win'
 # TODO: add your code here
 win.display() # displays the window
@@ -23,7 +23,7 @@ win.display() # displays the window
 ### Screenshots
 
 To save one of your images, run the code and with the window open, press the ENTER/RETURN key on your keyboard.
-Once you close the window, your screen capture will be saved.
+Once you close the window, your screen capture will be saved in the same directory your Python file is in.
 
 
 ---
