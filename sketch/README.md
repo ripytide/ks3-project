@@ -27,6 +27,13 @@ You will need to install Python and Pygame before using the sketch module.
 9. On Mac, double-click the file. On Windows, right click the file, select `extract all` and then follow the instructions.
 10. You should be able to find the sketch folder within this folder.
 
+### Alternatively
+
+If you can't install the above locally, an alternative option is to use replit.com:
+1. Create an account on https://replit.com
+2. Follow this link: https://replit.com/@PaoloM/PythonSketch
+3. Press the blue "Use Template" button in the top right
+
 
 ---
 
