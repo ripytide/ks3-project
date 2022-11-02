@@ -2,7 +2,7 @@
 
 Sketch is a Python module you can use to draw images with code.
 
-![sketch examples](../pygame/.data/sketch_examples.jpg)
+![sketch examples](.data/sketch_examples.jpg)
 
 
 ---
