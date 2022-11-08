@@ -27,7 +27,7 @@ def validate(parameter: any, expected: int, name: str):
             raise TypeError(f"{name} must contain numeric values")
 
 
-def validate_params(*argv: tuple[any, int, str]):
+def validate_params(*argv: (any, int, str)):
     """Validates the given parameters."""
     for arg in argv:
         validate(arg[0], arg[1], arg[2])
