@@ -32,7 +32,7 @@ This is a new sprite class for powerup sprites.
 class PowerUp(Sprite):
     def __init__(self):
         Sprite.__init__(self, self.containers)
-        self.image = pygame.image.load("data/powerup.png")
+        self.image = pygame.make_images.load("data/powerup.png")
         self.image = pygame.transform.scale(self.image, (16, 16))
         self.rect = self.image.get_rect()
         x = random.randrange(30, SCREENRECT.width - 30, 30)

@@ -2,7 +2,7 @@
 
 In this worksheet we're going to make an image of a pyramid.
 
-![pyramid](../.data/pyramid4.JPEG)
+![pyramid](../../.data/pyramid4.JPEG)
 
 
 ---
@@ -26,7 +26,7 @@ Feel free to change the width and height to get a different sized screen.
 
 If you run the code, you should see a blank canvas, like this:
 
-![blank](../.data/blank_window.png)
+![blank](../../.data/blank_window.png)
 
 From now on, all the code you write should go _after_ you create the window, but _before_ you display it.
 
@@ -55,7 +55,7 @@ win.rectangle(<colour>, <topleft>, <width>, <height>)
 
 If you run the code now, you should see something like this:
 
-![blue background](../.data/blue_window.png)
+![blue background](../../.data/blue_window.png)
 
 
 ---
@@ -83,7 +83,7 @@ win.rectangle(<colour>, <topleft>, <width>, <height>)
 
 After running the code, you should see the start of your pyramid:
 
-![bottom layer](../.data/pyramid_bottom.JPEG)
+![bottom layer](../../.data/pyramid_bottom.JPEG)
 
 ---
 
@@ -111,7 +111,7 @@ And how much does the width decrease by?
 
 The values in the diagram are just examples but hopefully help to visualise the answer:
 
-![pyramid layers](../.data/pyramid_layers.jpg)
+![pyramid layers](../../.data/pyramid_layers.jpg)
 </details>
 
 <details>
@@ -131,7 +131,7 @@ for i in range(5):
 ```
 </details>
 
-![block pyramid](../.data/pyramid1.JPEG)
+![block pyramid](../../.data/pyramid1.JPEG)
 
 ---
 
@@ -147,7 +147,7 @@ You'll need to consider:
 * The colour to fill the triangle with,
 * The coordinates of the three points on the screen.
 
-![triangle pyramid](../.data/pyramid2.JPEG)
+![triangle pyramid](../../.data/pyramid2.JPEG)
 
 
 ---
@@ -164,7 +164,7 @@ giving the illusion that one side of the pyramid is in shadow.
 
 I also added a circle for the sun and rectangle for the ground.
 
-![pyramid triangles](../.data/pyramid_triangles.jpg)
+![pyramid triangles](../../.data/pyramid_triangles.jpg)
 
 
 ---
@@ -178,7 +178,7 @@ Are you able to change the number of layers the pyramid has?
 
 Can you use this technique to create a triangle?
 
-![multiple pyramids](../.data/pyramids_multiple.jpg)
+![multiple pyramids](../../.data/pyramids_multiple.jpg)
 
 ### Task 2
 

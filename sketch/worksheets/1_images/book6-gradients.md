@@ -3,7 +3,7 @@
 In this worksheet we're going to make a colour gradient.
 This is where an image transitions from one colour to another.
 
-![gradient](../.data/colour_gradient.JPEG)
+![gradient](../../.data/colour_gradient.JPEG)
 
 
 ---
@@ -27,7 +27,7 @@ Feel free to change the width and height to get a different sized screen.
 
 If you run the code, you should see a blank canvas, like this:
 
-![blank](../.data/blank_window.png)
+![blank](../../.data/blank_window.png)
 
 From now on, all the code you write should go _after_ you create the window, but _before_ you display it.
 
@@ -44,7 +44,7 @@ The first line will be black (0, 0, 0).
 The second line will be a very dark grey (1, 1, 1).
 This continues all the way up to white (255, 255, 255), by which time we will have reached the width of the screen.
 
-![explanation gradient](../.data/explanation_gradient.jpg)
+![explanation gradient](../../.data/explanation_gradient.jpg)
 
 Let's put this into action:
 
@@ -58,7 +58,7 @@ win.line(<colour>, <start>, <end>, <width>)
 
 If you run your code, you should hopefully see a black-to-white colour gradient!
 
-![greyscale gradient](../.data/gradient.JPEG)
+![greyscale gradient](../../.data/gradient.JPEG)
 
 
 ---
@@ -103,7 +103,7 @@ Where `start_colour` is the name of the array containing your first colour.
 
 If you like, you could test your code at this point by drawing two rectangles onto the screen (one for each colour) and checking if you're happy with your choices:
 
-![binary gradient](../.data/binary_gradient.JPEG)
+![binary gradient](../../.data/binary_gradient.JPEG)
 
 
 ---
@@ -176,7 +176,7 @@ red = red + red_increment
 
 Hopefully if you run your code you should see the final result:
 
-![colour gradient](../.data/colour_gradient.JPEG)
+![colour gradient](../../.data/colour_gradient.JPEG)
 
 <details>
     <summary>Answer</summary>
@@ -199,11 +199,11 @@ for i in range(0, 500):
 
 Can you change the code, so it creates a vertical gradient instead?
 
-![vertical gradient](../.data/vertical_gradient.JPEG)
+![vertical gradient](../../.data/vertical_gradient.JPEG)
 
 How about a radial gradient? i.e. a circle that fades from one colour to another?
 
-![radial gradient](../.data/radial_gradient.JPEG)
+![radial gradient](../../.data/radial_gradient.JPEG)
 
 <details>
     <summary>Hint</summary>

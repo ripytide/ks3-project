@@ -2,7 +2,7 @@
 
 In this worksheet we're going to make an image of a chessboard pattern.
 
-![snow image](../.data/chessboard.JPEG)
+![snow image](../../.data/chessboard.JPEG)
 
 
 ---
@@ -39,7 +39,7 @@ win.display()
 
 If you run the code, you should see a square, blank canvas, like this:
 
-![blank](../.data/blank_window.png)
+![blank](../../.data/blank_window.png)
 
 From now on, all the code you write should go _after_ you create the window, but _before_ you display it.
 
@@ -85,7 +85,7 @@ colour = colours[0]
 ```
 </details>
 
-![chess square](../.data/chess_square.JPEG)
+![chess square](../../.data/chess_square.JPEG)
 
 
 ---
@@ -116,7 +116,7 @@ Using `row`, `col` and `square_width`, can you find the values of the `x` and `y
 
 Here are the coordinates for the first row - can you spot the pattern?
 
-![first column](../.data/chess_first_row.jpg)
+![first column](../../.data/chess_first_row.jpg)
 </details>
 
 <details>
@@ -132,7 +132,7 @@ At this point, you should be able to use the `win.rectangle()` command to create
 
 On running the code, you should see your whole board filled with squares of this colour:
 
-![chess filled](../.data/chess_filled.JPEG)
+![chess filled](../../.data/chess_filled.JPEG)
 
 
 ---
@@ -164,7 +164,7 @@ This is perfect for choosing a different colour from our 2D array!
 
 If you run the code, each column's square should alternate in colour:
 
-![chess stripes](../.data/chess_stripes.JPEG)
+![chess stripes](../../.data/chess_stripes.JPEG)
 
 <details>
     <summary>Answer</summary>
@@ -202,7 +202,7 @@ Implement this change, so that you add the row and column values together before
 
 With just this small change, re-running the code should give the final result:
 
-![chessboard](../.data/chessboard.JPEG)
+![chessboard](../../.data/chessboard.JPEG)
 
 
 ---
@@ -216,7 +216,7 @@ With the following tasks you can modify your chessboard code to create a grid in
 Can you change the size of the board?
 For example, a Sudoku grid is 9x9 instead of 8x8.
 
-![large chessboard](../.data/chessboard2.JPEG)
+![large chessboard](../../.data/chessboard2.JPEG)
 
 ### Task 2
 
@@ -228,4 +228,4 @@ For example, a Sudoku grid is 9x9 instead of 8x8.
 The last two steps make the squares slightly smaller, so they're not packed together like before.
 This makes gaps between the squares, showing the black background beneath them.
 
-![grid](../.data/grid.JPEG)
+![grid](../../.data/grid.JPEG)

@@ -1,4 +1,5 @@
 import os
+from PIL import Image
 import pygame
 from pygame.locals import QUIT, KEYDOWN, K_RETURN, K_ESCAPE, K_SPACE
 from pygame.rect import Rect
@@ -31,6 +32,27 @@ def validate_params(*argv: (any, int, str)):
     """Validates the given parameters."""
     for arg in argv:
         validate(arg[0], arg[1], arg[2])
+
+
+def save_gif(count, framerate):
+    frames = []
+    images = ["temp%d.JPEG" % j for j in range(1, count)]
+    for image in images:
+        new_frame = Image.open(image)
+        frames.append(new_frame)
+    frames[0].save('animation.gif',
+                   format='GIF',
+                   append_images=frames[1:],
+                   save_all=True,
+                   fps=framerate,
+                   loop=0)
+
+
+def cleanup_directory(count):
+    for i in range(1, count):
+        filename = "temp%d.JPEG" % i
+        if os.path.exists(filename):
+            os.remove(filename)
 
 
 class Window:
@@ -169,9 +191,9 @@ class Animation:
         self.background = Surface((width, height))
         self.background.fill((255, 255, 255))
         self.screen.blit(self.background, (0, 0))
-
         self.frames = list()
         self.current_frame = list()
+        self.clock = pygame.time.Clock()
 
     class Circle:
         def __init__(self, colour: (int, int, int), centre: (int, int), radius: int):
@@ -256,7 +278,23 @@ class Animation:
         self.frames.append(self.current_frame)
         self.current_frame = list()
 
-    def display(self, loop=True):
+    def __save_temp(self, count):
+        filename = "temp%d.JPEG" % count
+        pygame.image.save(self.screen, filename)
+
+    def __draw(self, frame):
+        for command in frame:
+            if type(command) == self.Circle:
+                pygame.draw.circle(self.screen, command.colour, command.centre, command.radius)
+            elif type(command) == self.Rectangle:
+                pygame.draw.rect(self.screen, command.colour, command.rect)
+            elif type(command) == self.Triangle:
+                pygame.draw.polygon(self.screen, command.colour, command.points)
+            else:
+                pygame.draw.line(self.screen, command.colour, command.start, command.end, command.width)
+        pygame.display.flip()
+
+    def display(self, loop=True, framerate=30):
         """
         Displays the window with the animation.
 
@@ -264,10 +302,12 @@ class Animation:
         Press the ESCAPE key to close the window.
 
         Parameters:
-            loop (bool): Loops the animation if set to True, plays once otherwise.
+            loop (bool): Loops the animation if set to True, plays once and saves a GIF otherwise.
+            framerate (int): Caps the frame rate to the given FPS (frames per second).
         """
         running = True
         paused = False
+        count = 1
 
         while running:
             for event in pygame.event.get():
@@ -281,22 +321,18 @@ class Animation:
 
             if not paused:
                 frame = self.frames.pop(0) if len(self.frames) else self.current_frame
+                self.__draw(frame)
+                self.clock.tick(framerate)
 
                 if loop:
                     self.frames.append(frame)
-                elif len(self.frames) == 0:
-                    running = False
-
-                for command in frame:
-                    if type(command) == self.Circle:
-                        pygame.draw.circle(self.screen, command.colour, command.centre, command.radius)
-                    elif type(command) == self.Rectangle:
-                        pygame.draw.rect(self.screen, command.colour, command.rect)
-                    elif type(command) == self.Triangle:
-                        pygame.draw.polygon(self.screen, command.colour, command.points)
-                    else:
-                        pygame.draw.line(self.screen, command.colour, command.start, command.end, command.width)
-
-                pygame.display.flip()
+                else:
+                    self.__save_temp(count)
+                    count += 1
+                    if len(self.frames) == 0:
+                        save_gif(count, framerate)
+                        running = False
 
         pygame.quit()
+        if not loop:
+            cleanup_directory(count)

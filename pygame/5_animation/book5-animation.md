@@ -180,7 +180,7 @@ class Alien(Sprite):
 ```python
 # Load images, assign to sprite classes.
 # (do this before the classes are used, after screen setup)
-img = pygame.image.load("data/explosion1.gif")
+img = pygame.make_images.load("data/explosion1.gif")
 Explosion.images = [img, pygame.transform.flip(img, 1, 1)]
 ```
 
@@ -198,8 +198,8 @@ Join `"data/alien"` with `(i+1)` and `".gif"` and store the resulting string in 
 
 ```python
 for i in range(0, 3):
-    filepath = "data/alien" + str(i+1) + ".gif"
-    Alien.images[i] = pygame.image.load(filepath)
+    filepath = "data/alien" + str(i + 1) + ".gif"
+    Alien.images[i] = pygame.make_images.load(filepath)
 ```
 </details>
 
