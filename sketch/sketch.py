@@ -35,8 +35,10 @@ def validate_params(*argv: (any, int, str)):
 
 
 def save_gif(count, framerate):
+    if not os.path.isdir('.temp/'):
+        raise FileNotFoundError('Error: failed to create GIF (.temp/ directory not found)')
     frames = []
-    images = ["temp%d.JPEG" % j for j in range(1, count)]
+    images = [".temp/temp%d.JPEG" % j for j in range(1, count)]
     for image in images:
         new_frame = Image.open(image)
         frames.append(new_frame)
@@ -50,7 +52,7 @@ def save_gif(count, framerate):
 
 def cleanup_directory(count):
     for i in range(1, count):
-        filename = "temp%d.JPEG" % i
+        filename = ".temp/temp%d.JPEG" % i
         if os.path.exists(filename):
             os.remove(filename)
 
@@ -279,7 +281,9 @@ class Animation:
         self.current_frame = list()
 
     def __save_temp(self, count):
-        filename = "temp%d.JPEG" % count
+        if not os.path.isdir('.temp/'):
+            os.mkdir('.temp/')
+        filename = ".temp/temp%d.JPEG" % count
         pygame.image.save(self.screen, filename)
 
     def __draw(self, frame):

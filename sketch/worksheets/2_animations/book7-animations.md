@@ -2,6 +2,8 @@
 
 In this worksheet, we're going to explore another exciting feature of the Sketch module: animations!
 
+![moving circle](../../.data/moving_circle.gif)
+
 Make sure you have the cheat sheet open - it tells you everything you need to know to use the Sketch module.
 
 If you get stuck, you can...

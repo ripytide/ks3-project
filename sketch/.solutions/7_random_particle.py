@@ -16,7 +16,7 @@ def main():
 
     # Animation loop
     anim = Animation(SCREEN_WIDTH, SCREEN_HEIGHT)
-    for t in range(1000):
+    for t in range(300):
         # Fill the screen with a white rectangle.
         anim.rectangle([255, 255, 255], [0, 0], 500, 500)
 
@@ -40,7 +40,7 @@ def main():
 
         anim.next_frame()
 
-    anim.display()
+    anim.display(loop=True)
 
 
 if __name__ == "__main__":
