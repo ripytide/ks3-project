@@ -1,52 +1,49 @@
+import math
 from sketch import Animation
 
+# Constants
 SCREEN_WIDTH = 500
 SCREEN_HEIGHT = 500
-win = Animation(SCREEN_WIDTH, SCREEN_HEIGHT)
-
-# Colours
-BLACK = [0, 0, 0]
-WHITE = [255, 255, 255]
-RED_ON = [255, 0, 0]
-RED_OFF = [50, 0, 0]
-AMBER_ON = [255, 175, 0]
-AMBER_OFF = [50, 50, 0]
-GREEN_ON = [0, 255, 0]
-GREEN_OFF = [0, 50, 0]
-
-# The light cycle
-cycle = [[RED_ON, AMBER_OFF, GREEN_OFF],
-         [RED_ON, AMBER_ON, GREEN_OFF],
-         [RED_OFF, AMBER_OFF, GREEN_ON],
-         [RED_OFF, AMBER_ON, GREEN_OFF]]
 
 
 def main():
-    # Iterate over each stage in the cycle.
-    for i in range(4):
-        # Extract the colours for this stage.
-        stage = cycle[i]
-        red = stage[0]
-        amber = stage[1]
-        green = stage[2]
+    win = Animation(SCREEN_WIDTH, SCREEN_HEIGHT)
 
-        # Clear the window.
-        win.rectangle(WHITE, [0, 0], SCREEN_WIDTH, SCREEN_HEIGHT)
+    n = 100
+    for i in range(n):
+        x = i * math.pi / (0.5 * n)
 
-        # Draw the black box.
-        win.rectangle(BLACK, [175, 50], 150, 400)
+        y_r = 0.5 * (math.cos(x) + 1)
+        y_r = int(y_r * 255)
 
-        # Draw the lights.
-        win.circle(red, [SCREEN_WIDTH // 2, 150], 50)
-        win.circle(amber, [SCREEN_WIDTH // 2, 250], 50)
-        win.circle(green, [SCREEN_WIDTH // 2, 350], 50)
+        y_g = 0.5 * (math.cos(x - 2 * math.pi / 3) + 1)
+        y_g = int(y_g * 255)
 
-        # Move on to the next frame.
+        y_b = 0.5 * (math.cos(x - 4 * math.pi / 3) + 1)
+        y_b = int(y_b * 255)
+
+        colour = [y_r, y_g, y_b]
+        win.rectangle(colour, [0, 0], SCREEN_WIDTH, SCREEN_HEIGHT)
         win.next_frame()
 
-    # Run the animation
-    win.display(framerate=2)
+    win.display(loop=False)
+
+
+def graph():
+    import matplotlib.pyplot as plt
+    import numpy as np
+    x = np.arange(0, 2 * np.pi, 0.1)
+    w = np.cos(x)
+    y = np.cos(x - np.pi * 2 / 3)
+    z = np.cos(x - np.pi * 4 / 3)
+    plt.plot(x, w, 'r', x, y, 'g', x, z, 'b')
+    plt.title('Offset Cosine Curves')
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.legend(['y = cos(x)', 'y = cos(x - 2π/3)', 'y = cos(x - 4π/3)'])
+    plt.show()
 
 
 if __name__ == '__main__':
     main()
+    # graph()

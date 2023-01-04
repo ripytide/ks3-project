@@ -1,40 +1,44 @@
 import math
-from sketch.sketch import Animation
+from sketch import Animation
+
+# Constants
+SCREEN_WIDTH = 500
+SCREEN_HEIGHT = 500
+BLACK = [0, 0, 0]
+WHITE = [255, 255, 255]
+BROWN = [100, 75, 50]
+CENTRE = [SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2]
+HOUR_LENGTH = SCREEN_HEIGHT * 0.45
+MINUTE_LENGTH = SCREEN_HEIGHT * 0.4
 
 
 def main():
-    # First, create the window.
-    SCREEN_WIDTH = 500
-    SCREEN_HEIGHT = 500
     win = Animation(SCREEN_WIDTH, SCREEN_HEIGHT)
 
-    # Colours
-    black = [0, 0, 0]
-    brown = [100, 75, 50]
-    white = [255, 255, 255]
+    for i in range(360):
+        # Find the end of the hour hand.
+        angle = i * math.pi / 180
+        opp = HOUR_LENGTH * math.sin(angle)
+        adj = HOUR_LENGTH * math.cos(angle)
+        x = CENTRE[0] + opp
+        y = CENTRE[1] - adj
 
-    # Variables
-    centre = [SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2]
-    l_r = SCREEN_HEIGHT * 0.45
-    s_r = SCREEN_HEIGHT * 0.4
-    SPEED = 200
+        # Draw the clock.
+        win.rectangle(BROWN, [0, 0], SCREEN_WIDTH, SCREEN_HEIGHT)
+        win.circle(WHITE, CENTRE, SCREEN_WIDTH // 2)
+        win.line(BLACK, CENTRE, [x, y], 1)
 
-    for i in range(SPEED):
-        # Update the variables for the long hand.
-        l_angle = (i / SPEED) * 2 * math.pi
-        l_x = centre[0] + l_r * math.sin(l_angle)
-        l_y = centre[1] - l_r * math.cos(l_angle)
+        # Find the end of the minute hand.
+        angle = 12 * i * math.pi / 180
+        opp = MINUTE_LENGTH * math.sin(angle)
+        adj = MINUTE_LENGTH * math.cos(angle)
+        x = CENTRE[0] + opp
+        y = CENTRE[1] - adj
 
-        # Update the variables for the short hand.
-        s_angle = (12 * (i / SPEED)) * 2 * math.pi
-        s_x = centre[0] + s_r * math.sin(s_angle)
-        s_y = centre[1] - s_r * math.cos(s_angle)
+        # Draw the minute hand.
+        win.line(BLACK, CENTRE, [x, y], 1)
 
-        # Draw the shapes.
-        win.rectangle(brown, [0, 0], SCREEN_WIDTH, SCREEN_HEIGHT)
-        win.circle(white, centre, SCREEN_WIDTH // 2)
-        win.line(black, centre, [l_x, l_y], 1)
-        win.line(black, centre, [s_x, s_y], 1)
+        # Move onto the next frame.
         win.next_frame()
 
     win.display(loop=True)
