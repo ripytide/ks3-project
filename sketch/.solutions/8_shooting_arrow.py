@@ -64,7 +64,7 @@ def main():
 
         anim.next_frame()
 
-    anim.display()
+    anim.display(framerate=-1)
 
 
 if __name__ == "__main__":
