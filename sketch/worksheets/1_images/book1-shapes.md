@@ -4,6 +4,15 @@ In this worksheet, we're going to create a program that allows the user to gener
 
 Make sure you have the cheat sheet open - it tells you everything you need to know to use the Sketch module.
 
+<details>
+    <summary>Click here if you need help with Python</summary>
+
+The following resources may be useful for this worksheet:
+* [input](https://www.w3schools.com/python/python_user_input.asp)
+* [converting between data types (casting)](https://www.w3schools.com/python/python_casting.asp)
+* [arrays (lists)](https://www.w3schools.com/python/python_lists.asp)
+</details>
+
 ![example shapes](../../.data/example_shapes.JPEG)
 
 

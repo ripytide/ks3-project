@@ -6,6 +6,14 @@ In this worksheet we're going to layer shapes on top of each other to create mor
 We'll start by creating this image of an archery target step by step.
 Then you'll get the chance to explore other designs and create your own.
 
+<details>
+    <summary>Click here if you need help with Python</summary>
+
+The following resources may be useful for this worksheet:
+* [arrays (lists)](https://www.w3schools.com/python/python_lists.asp)
+* [for loops (particularly nested loops)](https://www.w3schools.com/python/python_for_loops.asp)
+</details>
+
 ![target](../../.data/target.JPEG)
 
 

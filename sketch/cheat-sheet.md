@@ -1,5 +1,14 @@
 # Python Sketch
 
+This cheat sheet is a short guide on how to use the Sketch module.
+Neither this cheat sheet nor the worksheets teach Python basics.
+If you need help with Python syntax, check out these resources:
+
+* https://www.w3schools.com/python/
+* https://www.tutorialspoint.com/python/
+
+
+---
 
 ### Create a File
 

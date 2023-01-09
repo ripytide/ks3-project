@@ -13,6 +13,16 @@ If you get stuck, you can...
 * Move onto the next part of the exercise
   (there's a chance it will help reveal the answer).
 
+<details>
+    <summary>Click here if you need help with Python</summary>
+
+The following resources may be useful for this worksheet:
+* [variables](https://www.w3schools.com/python/python_variables.asp)
+* [arrays (lists)](https://www.w3schools.com/python/python_lists.asp)
+* [math module (particularly `math.cos()` and `math.pi`)](https://www.w3schools.com/python/module_math.asp)
+* [for loops](https://www.w3schools.com/python/python_for_loops.asp)
+</details>
+
 
 ---
 

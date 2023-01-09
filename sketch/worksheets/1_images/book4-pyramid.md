@@ -2,6 +2,15 @@
 
 In this worksheet we're going to make an image of a pyramid.
 
+<details>
+    <summary>Click here if you need help with Python</summary>
+
+The following resources may be useful for this worksheet:
+* [variables](https://www.w3schools.com/python/python_variables.asp)
+* [arrays (lists)](https://www.w3schools.com/python/python_lists.asp)
+* [for loops](https://www.w3schools.com/python/python_for_loops.asp)
+</details>
+
 ![pyramid](../../.data/pyramid4.JPEG)
 
 
