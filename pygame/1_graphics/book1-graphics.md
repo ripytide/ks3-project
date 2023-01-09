@@ -119,7 +119,7 @@ Run the code to see the result!
 Now you should find the following code nearby:
 
 ```python
-icon = pygame.image.load("data/alien1.gif")
+icon = pygame.make_images.load("data/alien1.gif")
 icon = pygame.transform.scale(icon, (32, 32))
 pygame.display.set_icon(icon)
 ```
@@ -295,10 +295,10 @@ Find the following code:
 
 ```python
 # Assign default images to each sprite class.
-Player.image = pygame.image.load("data/player1.gif")
-Alien.image = pygame.image.load("data/alien1.gif")
-Shot.image = pygame.image.load("data/shot.gif")
-Bomb.image = pygame.image.load("data/bomb.gif")
+Player.make_images = pygame.make_images.load("data/player1.gif")
+Alien.make_images = pygame.make_images.load("data/alien1.gif")
+Shot.make_images = pygame.make_images.load("data/shot.gif")
+Bomb.make_images = pygame.make_images.load("data/bomb.gif")
 ```
 
 Each line of code loads an image from the given filename and sets it as the image for a sprite class.
@@ -350,7 +350,7 @@ Make sure to write it *before* setting `self.rect = ...`.
 Replace `w` with the new width and `h` with the new height in pixels.
 
 ```python
-self.image = pygame.transform.scale(self.image, (w, h))
+self.make_images = pygame.transform.scale(self.make_images, (w, h))
 ```
 
 ### Your Turn
@@ -369,7 +369,7 @@ You can remove the background from your sprite's image by using the following fu
 It takes in the RGB colour of the background as a parameter.
 
 ```python
-self.image.set_colorkey((255, 0, 0))
+self.make_images.set_colorkey((255, 0, 0))
 ```
 
 This will make the red colour in the image transparent.
@@ -398,7 +398,7 @@ There is one simple function we can use to do this.
 Make sure it goes inside the initialisation (`__init__`) function *after* you're done setting up the image:
 
 ```python
-self.rect = self.image.get_rect()
+self.rect = self.make_images.get_rect()
 ```
 
 

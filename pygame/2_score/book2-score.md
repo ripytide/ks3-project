@@ -86,7 +86,7 @@ This should display a list of all the font names you can use.
 The following line of code sets the image of the **Score** sprite.
 
 ```python
-self.image = self.font.render(self.message, False, WHITE)
+self.make_images = self.font.render(self.message, False, WHITE)
 ```
 
 It uses the font we just created to render the message. Here, our message is stored in `self.message`.
@@ -112,7 +112,7 @@ RED = pygame.colour.Colour(255, 0, 0)
 Then, back in the Score sprite, change WHITE to RED:
 
 ```python
-self.image = self.font.render(self.message, False, RED)
+self.make_images = self.font.render(self.message, False, RED)
 ```
 
 Now try the same for yellow and teal (use the colour wheel from worksheet 1 to help).
@@ -288,7 +288,7 @@ The problem is that our message is a **string** but our score is an **int**.
 Finally, use this line of code to update our score image with the new message:
 
 ```python
-self.image = self.font.render(self.message, False, WHITE)
+self.make_images = self.font.render(self.message, False, WHITE)
 ```
 
 Run the game and check if the score updates properly each time you shoot an alien.

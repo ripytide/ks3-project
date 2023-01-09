@@ -1,5 +1,14 @@
 # Python Sketch
 
+This cheat sheet is a short guide on how to use the Sketch module.
+Neither this cheat sheet nor the worksheets teach Python basics.
+If you need help with Python syntax, check out these resources:
+
+* https://www.w3schools.com/python/
+* https://www.tutorialspoint.com/python/
+
+
+---
 
 ### Create a File
 
@@ -11,7 +20,7 @@ Create a new Python file and give it a name. Make sure it lives in the same fold
 ### Window Setup
 
 ```python
-from Sketch import Window # imports code from the sketch module
+from sketch import Window # imports code from the sketch module
 win = Window(500, 500) # creates a 500x500 pixel window called 'win'
 # TODO: add your code here
 win.display() # displays the window
@@ -23,7 +32,7 @@ win.display() # displays the window
 ### Screenshots
 
 To save one of your images, run the code and with the window open, press the ENTER/RETURN key on your keyboard.
-Once you close the window, your screen capture will be saved.
+Once you close the window, your screen capture will be saved in the same directory your Python file is in.
 
 
 ---
@@ -130,3 +139,56 @@ win.line([255, 0, 0], [50, 50], [400, 400], 10)
 ```
 
 ![rectangle explanation](.data/line_explanation.jpg)
+
+
+---
+
+### Animations
+
+An animation is a sequence of images.
+Each image in an animation is known as a 'frame':
+
+![circle frames](.data/circle_frames.jpg)
+
+When you play through the images quickly, it gives the illusion of motion:
+
+![circle animation problem](.data/circle_animation_problem.gif)
+
+---
+
+### The Animation Class
+
+To animate your images, use the `Animation` class instead of the `Window` class.
+
+It behaves almost identically:
+
+```python
+from sketch import Animation
+
+# Create an animation window that is 500 pixels wide and 500 pixels tall. 
+win = Animation(500, 500)
+
+for i in range(500):
+    # Draw a circle, whose x position changes each iteration of the loop.
+    win.circle([0, 0, 0], [i, 250], 10)
+    # Move onto the next frame of the animation.
+    win.next_frame()
+
+# Run the animation in a loop with a frame rate of 30 FPS.
+win.display(framerate=30, loop=True)
+```
+
+Note the changes:
+
+1. After drawing on each frame of the animation, you must call `win.next_frame()` to start drawing on the next frame.
+2. The `win.display()` function has an additional two parameters: framerate and loop (see below).
+3. Screenshots are not supported.
+
+Framerate:
+* This limits how fast the animation will play, measured in Frames Per Second (FPS). 
+* The default value is 30 FPS. 
+* A value of -1 will not limit the animation, allowing it to play as fast as your CPU can handle!
+
+Loop:
+* If `True`, your animation will play continuously in a loop.
+* If `False`, your animation will only play once, but when done, will save it to a .GIF file in the same folder as your code.
